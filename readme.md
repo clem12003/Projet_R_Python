@@ -28,7 +28,7 @@ SF-36 domains were scored according to standard procedures. Scores of each dimen
 
 The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores. Then they were standardized unsing French reference population norms, with a mean of 50 and a standard deviation of 10.
 
-Detailed information on SF-36 scoring procedures, including item mapping, score transformation, and computation of PCS and MCS, is provided in the "SF-36 appendix.md".
+Detailed information on SF-36 scoring procedures, including item mapping, score transformation, and computation of PCS and MCS, is provided in the `SF-36 appendix.md`.
 
 ### Participants
 
@@ -40,4 +40,4 @@ Detailed information on SF-36 scoring procedures, including item mapping, score 
 The aim of this project is to assess SF-36 dimension scores at 3 and 12 months after ICU discharge. In addition, a radar chart will be generated to visualize changes in quality of life dimensions over time.
 
 ## Data organization
-File: 'bazRSF.csv'
+File: `bazRSF.csv`
