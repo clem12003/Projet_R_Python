@@ -1,0 +1,326 @@
+---
+title: "crussol.clementine"
+author: "Clémentine Crussol"
+output:
+  html_document:
+    df_print: paged
+    code_folding: hide
+    toc: false
+    number_sections: true
+---
+
+##  Import the data
+
+```{r}
+bazR <- read.csv("data/bazRSF_reseau.csv", header = TRUE, sep = ";")
+```
+
+
+## Calculation of dimension scores at 3 months
+### Imputation of missing data
+
+```{r}
+items_sf36 <- list(
+  PF = c("SF_3mQ3a", "SF_3mQ3b","SF_3mQ3c","SF_3mQ3d", "SF_3mQ3e", "SF_3mQ3f","SF_3mQ3g", "SF_3mQ3h","SF_3mQ3i","SF_3mQ3j"),
+  RP = c("SF_3mQ4a", "SF_3mQ4b","SF_3mQ4c","SF_3mQ4d"),
+  BP = c("SF_3mQ7","SF_3mQ8"),
+  GH = c("SF_3mQ1","SF_3mQ11a","SF_3mQ11b", "SF_3mQ11c","SF_3mQ11d"),
+  VT = c("SF_3mQ9a", "SF_3mQ9e","SF_3mQ9g","SF_3mQ9i"),
+  SF = c("SF_3mQ6", "SF_3mQ10"),
+  RE = c("SF_3mQ5a","SF_3mQ5b","SF_3mQ5c"),
+  MH = c("SF_3mQ9b","SF_3mQ9c","SF_3mQ9d","SF_3mQ9f","SF_3mQ9h")
+)
+
+impute_sf36 <- function(df, items_list) {
+  df_out <- df
+  
+  for (dim in names(items_list)) {
+    vars <- items_list[[dim]]
+    
+    # nombre d'items présents par patient
+    present <- rowSums(!is.na(df[vars]))
+    
+    # règle SF-36 : au moins 50% des items présents
+    enough <- present >= length(vars) / 2
+    
+    # moyenne des items présents
+    row_means <- rowMeans(df[vars], na.rm = TRUE)
+    
+    # imputation des NA si règle respectée
+    for (v in vars) {
+      df_out[[v]][is.na(df[[v]]) & enough] <- row_means[is.na(df[[v]]) & enough]
+    }
+    
+    # si < 50% → toute la dimension devient NA
+    df_out[!enough, vars] <- NA
+  }
+  
+  return(df_out)
+}
+bazR <- impute_sf36(bazR, items_sf36)
+```
+
+### Calculation and transformation of dimension scores at 3 months
+Raw scores for each dimension were first computed by summing the values of all items belonging to that dimension.
+Scores were then linearly transformed to a 0–100 scale using the following formula:
+
+Transformed score = ((Observed score - Minimum possible score) / (Maximum possible score - Minimum possible score)) × 100
+
+In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.
+
+```{r}
+# Dimension PF
+aPF_3m <- (bazR$SF_3mQ3a + bazR$SF_3mQ3b + bazR$SF_3mQ3c + bazR$SF_3mQ3d + bazR$SF_3mQ3e + bazR$SF_3mQ3f
+            + bazR$SF_3mQ3g + bazR$SF_3mQ3h + bazR$SF_3mQ3i + bazR$SF_3mQ3j)
+
+bazR$PFtransformed_3m <- ((aPF_3m-10)/20)*100 
+
+
+# Dimension RP  
+aRP_3m <- (bazR$SF_3mQ4a + bazR$SF_3mQ4b + bazR$SF_3mQ4c + bazR$SF_3mQ4d)
+
+bazR$RPtransformed_3m<-((aRP_3m-4)/4)*100
+
+# Dimension BP
+aBP_3m <- (bazR$SF_3mQ7 + bazR$SF_3mQ8)
+
+bazR$BPtransformed_3m <- ((aBP_3m-2)/10)*100
+
+# Dimension GH
+aGH_3m <- (bazR$SF_3mQ1 + bazR$SF_3mQ11a + bazR$SF_3mQ11b + bazR$SF_3mQ11c + bazR$SF_3mQ11d)
+
+bazR$GHtransformed_3m <- ((aGH_3m-5)/20)*100
+
+# Dimension VT
+aVT_3m <- (bazR$SF_3mQ9a + bazR$SF_3mQ9e + bazR$SF_3mQ9g + bazR$SF_3mQ9i)
+
+bazR$VTtransformed_3m <- ((aVT_3m-4)/20)*100
+
+# Dimension SF
+aSF_3m <- (bazR$SF_3mQ6 + bazR$SF_3mQ10)
+
+bazR$SFtransformed_3m <- ((aSF_3m-2)/8)*100
+
+#calcul dimension RE
+aRE_3m <- (bazR$SF_3mQ5a + bazR$SF_3mQ5b + bazR$SF_3mQ5c)
+
+bazR$REtransformed_3m <- ((aRE_3m-3)/3)*100
+
+# Dimension MH
+aMH_3m <- (bazR$SF_3mQ9b + bazR$SF_3mQ9c + bazR$SF_3mQ9d + bazR$SF_3mQ9f + bazR$SF_3mQ9h)
+
+bazR$MHtransformed_3m <- ((aMH_3m-5)/25)*100
+
+# Dimension HT
+aHT_3m <- bazR$SF_3mQ2
+
+bazR$HTtransformed_3m <- ((aHT_3m-1)/4)*100
+
+```
+
+
+## Calculation of dimension scores at 12 months
+### Imputation of missing data
+
+```{r}
+
+items_sf36 <- list(
+  PF = c("SF_12mQ3a", "SF_12mQ3b","SF_12mQ3c","SF_12mQ3d", "SF_12mQ3e", "SF_12mQ3f",
+         "SF_12mQ3g", "SF_12mQ3h","SF_12mQ3i","SF_12mQ3j"),
+  RP = c("SF_12mQ4a", "SF_12mQ4b", "SF_12mQ4c","SF_12mQ4d"),
+  BP = c("SF_12mQ7","SF_12mQ8"),
+  GH = c("SF_12mQ1","SF_12mQ11a","SF_12mQ11b", "SF_12mQ11c","SF_12mQ11d"),
+  VT = c("SF_12mQ9a", "SF_12mQ9e","SF_12mQ9g","SF_12mQ9i"),
+  SF = c("SF_12mQ6", "SF_12mQ10"),
+  RE = c("SF_12mQ5a","SF_12mQ5b","SF_12mQ5c"),
+  MH = c("SF_12mQ9b","SF_12mQ9c","SF_12mQ9d","SF_12mQ9f","SF_12mQ9h")
+)
+
+impute_sf36 <- function(df, items_list) {
+  df_out <- df
+  
+  for (dim in names(items_list)) {
+    vars <- items_list[[dim]]
+    
+    # nombre d'items présents par patient
+    present <- rowSums(!is.na(df[vars]))
+    
+    # règle SF-36 : au moins 50% des items présents
+    enough <- present >= length(vars) / 2
+    
+    # moyenne des items présents
+    row_means <- rowMeans(df[vars], na.rm = TRUE)
+    
+    # imputation des NA si règle respectée
+    for (v in vars) {
+      df_out[[v]][is.na(df[[v]]) & enough] <- row_means[is.na(df[[v]]) & enough]
+    }
+    
+    # si < 50% → toute la dimension devient NA
+    df_out[!enough, vars] <- NA
+  }
+  
+  return(df_out)
+  
+}
+bazR <- impute_sf36(bazR, items_sf36)
+
+```
+
+### Calculation and transformation of dimension scores at 3 months
+Raw scores for each dimension were first computed by summing the values of all items belonging to that dimension.
+Scores were then linearly transformed to a 0–100 scale using the following formula:
+
+Transformed score = ((Observed score - Minimum possible score) / (Maximum possible score - Minimum possible score)) × 100
+
+In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.
+
+```{r}
+# Dimension PF
+aPF_12m <- (bazR$SF_12mQ3a + bazR$SF_12mQ3b + bazR$SF_12mQ3c + bazR$SF_12mQ3d + bazR$SF_12mQ3e 
+            + bazR$SF_12mQ3f + bazR$SF_12mQ3g + bazR$SF_12mQ3h + bazR$SF_12mQ3i + bazR$SF_12mQ3j)
+
+bazR$PFtransformed_12m<-((aPF_12m-10)/20)*100 
+
+# Dimension RP
+aRP_12m <- (bazR$SF_12mQ4a + bazR$SF_12mQ4b + bazR$SF_12mQ4c + bazR$SF_12mQ4d)
+
+bazR$RPtransformed_12m <- ((aRP_12m-4)/4)*100
+
+# Dimension BP
+aBP_12m <- (bazR$SF_12mQ7 + bazR$SF_12mQ8)
+
+bazR$BPtransformed_12m <- ((aBP_12m-2)/10)*100
+
+# Dimension GH
+aGH_12m <- (bazR$SF_12mQ1 + bazR$SF_12mQ11a + bazR$SF_12mQ11b + bazR$SF_12mQ11c + bazR$SF_12mQ11d)
+
+bazR$GHtransformed_12m <- ((aGH_12m-5)/20)*100
+
+# Dimension VT
+aVT_12m <- (bazR$SF_12mQ9a + bazR$SF_12mQ9e + bazR$SF_12mQ9g + bazR$SF_12mQ9i)
+
+bazR$VTtransformed_12m <- ((aVT_12m-4)/20)*100
+
+# Dimension SF
+aSF_12m <- (bazR$SF_12mQ6 + bazR$SF_12mQ10)
+
+bazR$SFtransformed_12m <- ((aSF_12m-2)/8)*100
+
+# Dimension RE
+aRE_12m <- (bazR$SF_12mQ5a + bazR$SF_12mQ5b + bazR$SF_12mQ5c)
+
+bazR$REtransformed_12m <- ((aRE_12m-3)/3)*100
+
+# Dimension MH
+aMH_12m <- (bazR$SF_12mQ9b + bazR$SF_12mQ9c + bazR$SF_12mQ9d + bazR$SF_12mQ9f + bazR$SF_12mQ9h)
+
+bazR$MHtransformed_12m <- ((aMH_12m-5)/25)*100
+
+# Dimension HT
+aHT_12m <- bazR$SF_12mQ2
+
+bazR$HTtransformed_12m <- ((aHT_12m-1)/4)*100
+
+```
+
+## Statistical comparison of dimension scores at 3 and 12 months and construction of a radar plot
+
+```{r}
+
+summary(bazR$PFtransformed_3m)
+summary(bazR$PFtransformed_12m)
+radarPF=c(100,0,57.94,61.19) #max 100, min 0, PF3mois=58.19, PF1an=62.27
+wilcox.test(bazR$PFtransformed_3m,bazR$PFtransformed_12m)
+
+
+summary(bazR$RPtransformed_3m)
+summary(bazR$RPtransformed_12m)
+radarRP=c(100,0,31.6,47.03)
+wilcox.test(bazR$RPtransformed_3m,bazR$RPtransformed_12m)
+
+
+summary(bazR$BPtransformed_3m)
+summary(bazR$BPtransformed_12m)
+radarBP=c(100,0,46.64,48.16)
+wilcox.test(bazR$BPtransformed_3m,bazR$BPtransformed_12m)
+
+
+summary(bazR$GHtransformed_3m)
+summary(bazR$GHtransformed_12m)
+radarHG=c(100,0,50.42,52.3)
+wilcox.test(bazR$GHtransformed_3m,bazR$GHtransformed_12m)
+
+
+summary(bazR$VTtransformed_3m)
+summary(bazR$VTtransformed_12m)
+radarVT=c(100,0,47.53,51.22)
+wilcox.test(bazR$VTtransformed_3m,bazR$VTtransformed_12m)
+
+
+summary(bazR$SFtransformed_3m)
+summary(bazR$SFtransformed_12m)
+radarSF=c(100,0,61.01,67.09)
+wilcox.test(bazR$SFtransformed_3m,bazR$SFtransformed_12m)
+
+
+summary(bazR$REtransformed_3m)
+summary(bazR$REtransformed_12m)
+radarRE=c(100,0,46.19,56.06)
+wilcox.test(bazR$REtransformed_3m,bazR$REtransformed_12m)
+
+
+summary(bazR$MHtransformed_3m)
+summary(bazR$MHtransformed_12m)
+radarMH=c(100,0,61.35,62.45)
+wilcox.test(bazR$MHtransformed_3m,bazR$MHtransformed_12m)
+
+png("./results/radar_plot.png",width = 1800,height = 1800,res = 300)
+
+data<-cbind(radarPF,radarRP,radarBP,radarHG,radarVT,radarSF,radarRE,radarMH) #fait tableau avec ensemble dimensions
+
+labels = c("PF \n p=0.06","RP\n p<0.0001","BP\n p=0.25","HG\n p=0.18",
+           "VT\n p=0.01","SF\n  p=0.0004","RE\n p=0.0008","MH\n p=0.33")
+
+colnames(data)<-labels #remplace nom des colonnes par valeurs dans data
+
+# Les données sont mises en forme sous forme de tableau dont les colonnes sont nommées
+#requiert package fmsb et scales
+library(fmsb)
+library(scales)
+
+datx = as.data.frame(data) ; datx
+
+coul <- c("red", "blue") #creer un vecteur de 3 couleurs
+
+radarchart(datx, 
+           axistype = 2, 
+           seg = 5, #radachart sur data frame datx, axistype= style des axes, seg=nb de graduation
+           vlcex = 0.7,
+           pcol = coul,#couleurs contour des polygones
+           plwd=2 , 
+           plty=1, #épaisseur lignes, et lignes pleines (plty=1) 
+           cglcol="gray71", 
+           cglty=1,
+           axislabcol="grey",      #couleur et style grille
+
+)
+
+
+legend(1.6,0.8,#position légende
+       legend=c("3 month","12 month"), 
+       pch=c(16,16), #symboles points pleins
+       col=c("red","blue"), #couleurs associées aux légendes
+       lty=c(1,1), #ligne pleine
+       text.font=1, #texte en gras
+       box.lty=0 #pas de cadre autour figure
+)
+dev.off()
+```
+
+
+## Export data
+```{r}
+write.csv(bazR, "results/bazR_scores.csv", row.names = FALSE)
+```
+
