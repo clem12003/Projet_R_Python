@@ -1,4 +1,4 @@
-#### Impaired quality of life after intensive care
+# Impaired quality of life after intensive care
 
 # 1. Scientific problem 
 ## 1.1. Context
@@ -17,12 +17,16 @@ The aim of this study is to evaluate the quality of life of ICU survivors at 3 a
 
 ## 1.3. Method
 
-All ICU survivors were contacted by mail 3 and 12 month after hospital discharge and were asked to complete the SF-36 questionnaire. 
+All ICU survivors were contacted by mail 3 and 12 month after hospital discharge and were asked to complete the SF-36 questionnaire.
 
 ### Outcome measure
 
 Quality of life was assesed using the SF-36 questionnaire. This questionnaire evaluate multiple dimensions of quality of life including : Physical Functionning (PF), Role Physical (RP), Bodily Pain (BP), General Health (GH), Vitality (VT), Social Functioning (SF), Role Emotional (RE), Mental Health (MH). 
 Then, this dimensions are grouped into two components, the Physical Component Summary (PCS), including PF, RP, BP and GH, and the Mental Component Summary (MCS), including VT, SF, RE and MH.
+
+SF-36 domains were scored according to standard procedures. Scores of each dimension were first computed by summing the values of all items belonging to that dimension and were then linearly transformed to a 0–100 scale. Higher scores indicate better heath status.
+
+The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores. Then they were normalized unsing French reference population norms, with a mean of 50 and a standard deviation of 10.
 
 ### Participants
 
