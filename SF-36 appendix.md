@@ -5,23 +5,15 @@ This appendix provides additional methodological details regarding the SF-36 que
 ## SF-36 mapping
 The 36 item of the questionnaire then form 8 dimensions.
 
-Physical Functioning (PF): item 3a, 3b, 3c, 3d, 3e, 3f, 3g, 3h, 3i
-
-Role Physical (RP): item 4a, 4b, 4c, 4d
-
-Bodily Pain (BP): item 7, 8
-
-General Health (GH): item 1, 11a, 11b, 11c, 11d
-
-Vitality (VT): item 9a, 9e, 9g, 9i
-
-Social Functioning (SF): item 6, 10
-
-Role Emotional (RE): item 5a, 5b, 5c
-
-Mental Health (MH): item 9b, 9c, 9d, 9f, 9h
-
-Health Transition(HT): item 2
+Physical Functioning (PF): item 3a, 3b, 3c, 3d, 3e, 3f, 3g, 3h, 3i  
+Role Physical (RP): item 4a, 4b, 4c, 4d  
+Bodily Pain (BP): item 7, 8  
+General Health (GH): item 1, 11a, 11b, 11c, 11d  
+Vitality (VT): item 9a, 9e, 9g, 9i  
+Social Functioning (SF): item 6, 10  
+Role Emotional (RE): item 5a, 5b, 5c  
+Mental Health (MH): item 9b, 9c, 9d, 9f, 9h  
+Health Transition(HT): item 2  
 
 ## Dimensions transformation procedure
 
@@ -31,35 +23,35 @@ Transformed score = ((Observed score - Minimum possible score) / (Maximum possib
 
 Here are the minimum and maximal posible scores for each dimension.
 
-Physical Functioning (PF)
+Physical Functioning (PF)  
 Minimum possible score: 10  
 Maximum possible score: 30
 
-Role Physical (RP)
+Role Physical (RP)  
 Minimum possible score: 4  
 Maximum possible score: 8
 
-Bodily Pain (BP)
+Bodily Pain (BP)  
 Minimum possible score: 2  
 Maximum possible score: 12
 
-Vitality (VT)
+Vitality (VT)  
 Minimum possible score: 4  
 Maximum possible score: 24
 
-Social Functioning (SF)
+Social Functioning (SF)  
 Minimum possible score: 2  
 Maximum possible score: 10
 
-Role Emotional (RE)
+Role Emotional (RE)  
 Minimum possible score: 3  
 Maximum possible score: 6
 
-Mental Health (MH)
+Mental Health (MH)  
 Minimum possible score: 5  
 Maximum possible score: 30
 
-Health Transition (HT)
+Health Transition (HT)  
 Minimum possible score: 1  
 Maximum possible score: 5
 
@@ -72,13 +64,13 @@ Z = Observed dimension score - mean of the French general population / standard 
 
 ### French general population norms for each dimension (INSEE 2002-2003):
 
-Physical Functioning (PF): 85.3 ± 22.3
-Role Physical (RP): 82.2 ± 32.2
-Bodily Pain (BP): 73.0 ± 24.6
-General Health (GH): 67.8 ± 18.9
-Vitality (VT): 57.4 ± 18.0
-Social Functioning (SF): 80.9 ± 21.2
-Role Emotional (RE): 82.0 ± 32.9
+Physical Functioning (PF): 85.3 ± 22.3  
+Role Physical (RP): 82.2 ± 32.2  
+Bodily Pain (BP): 73.0 ± 24.6  
+General Health (GH): 67.8 ± 18.9  
+Vitality (VT): 57.4 ± 18.0  
+Social Functioning (SF): 80.9 ± 21.2  
+Role Emotional (RE): 82.0 ± 32.9  
 Mental Health (MH): 66.7 ± 17.7
 
 ### PCS and MCS computation
