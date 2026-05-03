@@ -26,7 +26,7 @@ Then, this dimensions are grouped into two components, the Physical Component Su
 
 SF-36 domains were scored according to standard procedures. Scores of each dimension were first computed by summing the values of all items belonging to that dimension and were then linearly transformed to a 0–100 scale. Higher scores indicate better heath status.
 
-The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores. Then they were normalized unsing French reference population norms, with a mean of 50 and a standard deviation of 10.
+The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores. Then they were standardized unsing French reference population norms, with a mean of 50 and a standard deviation of 10.
 
 ### Participants
 

@@ -1,0 +1,85 @@
+# Appendix
+
+This appendix provides additional methodological details regarding the SF-36 questionnaire. It includes the mapping of SF-36 items to their respectives dimensions, dimensions transformation procedures, and the calculation of the physical and mental component (PCS and MCS).
+
+## SF-36 mapping
+The 36 item of the questionnaire then form 8 dimensions.
+
+Physical Functioning (PF): item 3a, 3b, 3c, 3d, 3e, 3f, 3g, 3h, 3i
+Role Physical (RP): item 4a, 4b, 4c, 4d
+Bodily Pain (BP): item 7, 8
+General Health (GH): item 1, 11a, 11b, 11c, 11d
+Vitality (VT): item 9a, 9e, 9g, 9i
+Social Functioning (SF): item 6, 10
+Role Emotional (RE): item 5a, 5b, 5c
+Mental Health (MH): item 9b, 9c, 9d, 9f, 9h
+Health Transition(HT): item 2
+
+## Dimensions transformation procedure
+
+All the dimensions are normalized to have a score between 0 and 100 using this formula:
+
+Transformed score = ((Observed score - Minimum possible score) / (Maximum possible score - Minimum possible score)) × 100
+
+Here are the minimum and maximal posible scores for each dimension.
+
+Physical Functioning (PF)
+Minimum possible score: 10
+Maximum possible score: 30
+
+Role Physical (RP)
+Minimum possible score: 4
+Maximum possible score: 8
+
+Bodily Pain (BP)
+Minimum possible score: 2
+Maximum possible score: 12
+
+Vitality (VT)
+Minimum possible score: 4
+Maximum possible score: 24
+
+Social Functioning (SF)
+Minimum possible score: 2
+Maximum possible score: 10
+
+Role Emotional (RE)
+Minimum possible score: 3
+Maximum possible score: 6
+
+Mental Health (MH)
+Minimum possible score: 5
+Maximum possible score: 30
+
+Health Transition (HT)
+Minimum possible score: 1
+Maximum possible score: 5
+
+## Calculation of the physical and mental components (PCS and MCS)
+
+The SF-36 domain scores were then standardized into z-scores using reference values from the French general population in order to compute the Physical Component Summary (PCS) and Mental Component Summary (MCS).
+
+
+Z = Observed dimension score - mean of the French general population / standard deviation of the French general population
+
+### French general population norms for each dimension (INSEE 2002-2003):
+
+Physical Functioning (PF): 85.3 ± 22.3
+Role Physical (RP): 82.2 ± 32.2
+Bodily Pain (BP): 73.0 ± 24.6
+General Health (GH): 67.8 ± 18.9
+Vitality (VT): 57.4 ± 18.0
+Social Functioning (SF): 80.9 ± 21.2
+Role Emotional (RE): 82.0 ± 32.9
+Mental Health (MH): 66.7 ± 17.7
+
+### PCS and MCS computation
+
+The Physical and Mental Component Summary scores were calculated using a weighted linear combination of standardized SF-36 domain scores.
+
+PCS = ((PFz × 0.42402) + (RPz × 0.31754) + (BPz × 0.31754) +  (GHz × 0.24954) + (VTz × 0.02877) + 
+      (SFz × -0.00753) +  (REz × -0.19206) + (MHz × -0.2069)) x 10 + 50
+
+MCS = ((PFz × -0.22999) + (RPz x -0.12329) + (BPz x -0.09731) + (GHz x -0.01571) + (VTz x 0.23534) + 
+      (SFz x 0.26876) + (REz x 0.43407) + (MHz x 0.48581)) × 10 + 50
+
