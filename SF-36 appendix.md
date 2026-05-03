@@ -32,35 +32,35 @@ Transformed score = ((Observed score - Minimum possible score) / (Maximum possib
 Here are the minimum and maximal posible scores for each dimension.
 
 Physical Functioning (PF)
-Minimum possible score: 10
+Minimum possible score: 10  
 Maximum possible score: 30
 
 Role Physical (RP)
-Minimum possible score: 4
+Minimum possible score: 4  
 Maximum possible score: 8
 
 Bodily Pain (BP)
-Minimum possible score: 2
+Minimum possible score: 2  
 Maximum possible score: 12
 
 Vitality (VT)
-Minimum possible score: 4
+Minimum possible score: 4  
 Maximum possible score: 24
 
 Social Functioning (SF)
-Minimum possible score: 2
+Minimum possible score: 2  
 Maximum possible score: 10
 
 Role Emotional (RE)
-Minimum possible score: 3
+Minimum possible score: 3  
 Maximum possible score: 6
 
 Mental Health (MH)
-Minimum possible score: 5
+Minimum possible score: 5  
 Maximum possible score: 30
 
 Health Transition (HT)
-Minimum possible score: 1
+Minimum possible score: 1  
 Maximum possible score: 5
 
 ## Calculation of the physical and mental components (PCS and MCS)
