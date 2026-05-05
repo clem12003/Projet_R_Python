@@ -39,5 +39,11 @@ Detailed information on SF-36 scoring procedures, including item mapping, score 
 
 The aim of this project is to assess SF-36 dimension scores at 3 and 12 months after ICU discharge. In addition, a radar chart will be generated to visualize changes in quality of life dimensions over time.
 
-## Data organization
+## 2.2. Data organization
 File: `bazRSF.csv`
+Colums:`SF_(x)MQ(y)`
+
+sf_[x]m_q[y]
+
+* x = nombre de mois
+* y = numéro de question
