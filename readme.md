@@ -92,9 +92,16 @@ $$
 
 PCS and MCS are then computed as weighted linear combinations of these standardized dimension scores using the respective scoring coefficients.  
 
-The reference values from the French general population are provided in the `SF-36 appendix` as well as the details of PCS and MCS calculation  
+The reference values from the French general population are provided in the `SF-36 appendix.md` as well as the details of PCS and MCS calculation  
 **Output**: A summary score for physical (PCS) and mental (MCS) health status at both time point 
 
+### 3.3.2. Visualization of the distribution of PCS and MCS at 3 and 12 months
+**Aim**: To compare the distribution beween PCS and MCS between 3 and 12 months using boxplots to visualize changes over time  
+**Input**: `bazP_scores.csv` in `data` folder  
+**Output**: Boxplots displaying the distribution of PCS and MCS scores at 3 and 12 months, allowing visual comparison of changes over time  
+
+### 3.4. Conclusion
 
 
+### 4. References
 
