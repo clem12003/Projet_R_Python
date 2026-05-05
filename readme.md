@@ -85,17 +85,14 @@ Colums:
 **Input**: `bazP_scores.csv` in `data` folder  
 **Calculation**:
 Each SF-36 dimension score is first standardized into a z-score using the reference values of the French population :  
-$$
-Z = \frac{X - \mu}{\sigma}
-$$
-
 
 $$
 Z = \frac{\text{Observed dimension score} - \text{Mean of the French general population}}{\text{Standard deviation of the French general population}}
 $$
 
-PCS and MCS are then computed as weighted linear combinations of these standardized dimension scores using the respective scoring coefficients.
+PCS and MCS are then computed as weighted linear combinations of these standardized dimension scores using the respective scoring coefficients.  
 
+The reference values from the French general population are provided in the `SF-36 appendix` as well as the details of PCS and MCS calculation  
 **Output**: A summary score for physical (PCS) and mental (MCS) health status at both time point 
 
 
