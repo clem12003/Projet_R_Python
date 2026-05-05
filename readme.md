@@ -47,7 +47,7 @@ Colums:
 `SF_12m_Q[y]`: SF-36 score at 12 months for question y (where y is the question number e.g. 1, 2, 3a, ...)  
 
 ## 2.3. Script organization
-### 2.3.1 Calculation and transformation of dimension scores at 3 months
+### 2.3.1 Calculation and transformation of dimension scores at 3 and 12 months
 **Aim**: To compute dimension scores and transform them onto a 0-100 scale for comparability and interpretation  
 **Input**: `bazRSF.csv` in `data` folder  
 **Calculation**:   
@@ -59,3 +59,9 @@ $$
 $$
 
 In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.
+**Output**: A standardized score for each dimension, ranging between 0 and 100    
+### 2.3.2 Visualization of the evolution of dimension scores between 3 and 12 months
+**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant  
+**Input**: `bazRSF.csv` in `data` folder  
+**Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement  
+
