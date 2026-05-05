@@ -40,10 +40,22 @@ Detailed information on SF-36 scoring procedures, including item mapping, score 
 The aim of this project is to assess SF-36 dimension scores at 3 and 12 months after ICU discharge. In addition, a radar chart will be generated to visualize changes in quality of life dimensions over time.
 
 ## 2.2. Data organization
-File: `bazRSF.csv`
-Colums:`SF_(x)MQ(y)`
+File: `bazRSF.csv`  
+Colums:
+`ID`: Patient ID, corresponding to their number of inclusion
+`SF_3m_Q[y]`: SF-36 score at 3 months for question y (where y is the question number e.g. 1, 2, 3a, ...) 
+`SF_12m_Q[y]`: SF-36 score at 12 months for question y (where y is the question number e.g. 1, 2, 3a, ...) 
 
-sf_[x]m_q[y]
+## 2.3. Script organization
+### 2.3.1 Calculation and transformation of dimension scores at 3 months
+**Aim**: To compute dimension scores and transform them onto a 0-100 scale for comparability and interpretation
+**Input**: `bazRSF.csv` in `data` folder
+**Calculation**: 
+Raw scores for each dimension are first computed by summing the values of all items belonging to that dimension.
+Scores are then linearly transformed to a 0–100 scale using the following formula:
 
-* x = nombre de mois
-* y = numéro de question
+$$
+\text{Transformed score} = \frac{\text{Observed score} - \text{Minimum possible score}}{\text{Maximum possible score} - \text{Minimum possible score}} \times 100
+$$
+
+In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.
