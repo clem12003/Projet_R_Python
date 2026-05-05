@@ -58,10 +58,41 @@ $$
 \text{Transformed score} = \frac{\text{Observed score} - \text{Minimum possible score}}{\text{Maximum possible score} - \text{Minimum possible score}} \times 100
 $$
 
-In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.
-**Output**: A standardized score for each dimension, ranging between 0 and 100    
+In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.  
+**Output**: A standardized score for each dimension, ranging between 0 and 100  
+
 ### 2.3.2 Visualization of the evolution of dimension scores between 3 and 12 months
 **Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant  
 **Input**: `bazRSF.csv` in `data` folder  
-**Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement  
+**Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement or not  
+
+# 3. Python Project
+## 3.1. Aim
+To compute Physical Component Summary (PCS) and Mental Component Summary (MCS) scores and compare their distribution at 3 and 12 months using boxplots to assess changes over time.  
+
+## 3.2. Data organization
+File: `bazP_scores.csv`  
+Colums:  
+`ID`: Patient ID, corresponding to their number of inclusion  
+`SF_3m_Q[x]`: SF-36 score at 3 months for question y (where x is the question number e.g. 1, 2, 3a, ...)   
+`SF_12m_Q[x]`: SF-36 score at 12 months for question y (where x is the question number e.g. 1, 2, 3a, ...)   
+`[y]transformed_3m`: Transformed SF-36 dimension scores at 3 months (where y is the name of the dimension, e.g. PF, RP, BP, ...)   
+`[y]transformed_12m`: Transformed SF-36 dimension scores at 12 months (where y is the name of the dimension, e.g. PF, RP, BP, ...)  
+
+## 3.3. Script organization
+### 3.3.1. Calculation of the Physical and Mental Component Summay (PCS and MCS)
+**Aim**: To compute summary scores representing overall physical (PCS) and mental (MCS) health status from SF-36 dimensions
+**Input**: `bazP_scores.csv` in `data` folder  
+**Calculation**:
+Each SF-36 dimension score is first standardized into a z-score using the reference values of the French population :
+$$
+Z = \frac{\text{Observed dimension score} - \text{Mean of the French general population}}{\text{Standard deviation of the French general population}}
+$$
+
+PCS and MCS are then computed as weighted linear combinations of these standardized dimension scores using the respective scoring coefficients.
+
+**Output**: A summary score for physical (PCS) and mental (MCS) health status at both time point 
+
+
+
 
