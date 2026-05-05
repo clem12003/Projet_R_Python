@@ -100,8 +100,8 @@ The reference values from the French general population are provided in the `SF-
 **Input**: `bazP_scores.csv` in `data` folder  
 **Output**: Boxplots displaying the distribution of PCS and MCS scores at 3 and 12 months, allowing visual comparison of changes over time  
 
-### 3.4. Conclusion
+## 3.4. Conclusion
 
 
-### 4. References
+## 4. References
 
