@@ -86,6 +86,11 @@ Colums:
 **Calculation**:
 Each SF-36 dimension score is first standardized into a z-score using the reference values of the French population :  
 $$
+Z = \frac{X - \mu}{\sigma}
+$$
+
+
+$$
 Z = \frac{\text{Observed dimension score} - \text{Mean of the French general population}}{\text{Standard deviation of the French general population}}
 $$
 
