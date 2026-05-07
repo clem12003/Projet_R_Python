@@ -5,7 +5,7 @@ This appendix provides additional methodological details regarding the SF-36 que
 ## SF-36 mapping
 The 36 item of the questionnaire then form 8 dimensions.
 
-|          Dimension        |         Items       |
+|          Dimension        | Items corresponding |
 |:-------------------------:|:-------------------:|
 | Physical Functioning (PF) |       3a to 3i      |
 | Role Physical (RP)        |       4a to 4d      |
