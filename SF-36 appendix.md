@@ -5,6 +5,18 @@ This appendix provides additional methodological details regarding the SF-36 que
 ## SF-36 mapping
 The 36 item of the questionnaire then form 8 dimensions.
 
+|          Dimension        |         Items       |
+|:-------------------------:|:-------------------:|
+| Physical Functioning (PF) |       3a to 3i      |
+| Role Physical (RP)        |       4a to 4d      |
+| Bodily Pain (BP)          |       7 and 8       |
+| General Health (GH)       |    1, 11a to 11d    |
+| Vitality (VT)             |    9a, 9e, 9g, 9i   |
+| Social Functioning (SF)   |       6 and 10      |
+| Role Emotional (RE)       |       5a to 5c      |
+| Mental Health (MH)        | 9b, 9c, 9d, 9f, 9h  |
+| Health Transition(HT)     |          2          |
+
 Physical Functioning (PF): item 3a, 3b, 3c, 3d, 3e, 3f, 3g, 3h, 3i  
 Role Physical (RP): item 4a, 4b, 4c, 4d  
 Bodily Pain (BP): item 7, 8  
@@ -25,50 +37,18 @@ $$
 
 Here are the minimum and maximal posible scores for each dimension.
 
-|          Dimension        |     Minimum posible score    |     Maximum posible score |
-|:-------------------------:|:-------------------:|:-------------------:|
-| Physical Functioning (PF) |     10    |  30  |
-| Role Physical (RP)        |     4     |  8   |
-| Bodily Pain (BP)          |     2     |  12  |
-| General Health (GH)       |     5     |  25  |
-| Vitality (VT)             |     4     |  24  |
-| Social Functioning (SF)   |     2     |  10  |
-| Role Emotional (RE)       |     3     |  6   |
-| Mental Health (MH)        |     5     |  30  |
-| Health Transition (HT)    |     1     |  5   |
+|          Dimension        |     Minimum posible score    |     Maximum posible score     |
+|:-------------------------:|:----------------------------:|:-----------------------------:|
+| Physical Functioning (PF) |              10              |              30               |
+| Role Physical (RP)        |              4               |              8                |
+| Bodily Pain (BP)          |              2               |              12               |
+| General Health (GH)       |              5               |              25               |
+| Vitality (VT)             |              4               |              24               |
+| Social Functioning (SF)   |              2               |              10               |
+| Role Emotional (RE)       |              3               |              6                |
+| Mental Health (MH)        |              5               |              30               |
+| Health Transition (HT)    |              1               |              5                |
 
-
-Physical Functioning (PF)  
-Minimum possible score: 10  
-Maximum possible score: 30
-
-Role Physical (RP)  
-Minimum possible score: 4  
-Maximum possible score: 8
-
-Bodily Pain (BP)  
-Minimum possible score: 2  
-Maximum possible score: 12
-
-Vitality (VT)  
-Minimum possible score: 4  
-Maximum possible score: 24
-
-Social Functioning (SF)  
-Minimum possible score: 2  
-Maximum possible score: 10
-
-Role Emotional (RE)  
-Minimum possible score: 3  
-Maximum possible score: 6
-
-Mental Health (MH)  
-Minimum possible score: 5  
-Maximum possible score: 30
-
-Health Transition (HT)  
-Minimum possible score: 1  
-Maximum possible score: 5
 
 ## Calculation of the physical and mental components (PCS and MCS)
 
