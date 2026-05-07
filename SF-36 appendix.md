@@ -89,9 +89,5 @@ The Physical and Mental Component Summary scores were calculated using a weighte
 \text{MCS} = \left[(PF_z \times -0.22999) + (RP_z \times -0.12329) + (BP_z \times -0.09731) + (GH_z \times -0.01571) + (VT_z \times 0.23534) + (SF_z \times 0.26876) + (RE_z \times 0.43407) + (MH_z \times 0.48581)\right] \times 10 + 50
 \]
 
-PCS = ((PFz × 0.42402) + (RPz × 0.31754) + (BPz × 0.31754) +  (GHz × 0.24954) + (VTz × 0.02877) + 
-      (SFz × -0.00753) +  (REz × -0.19206) + (MHz × -0.2069)) x 10 + 50
 
-MCS = ((PFz × -0.22999) + (RPz x -0.12329) + (BPz x -0.09731) + (GHz x -0.01571) + (VTz x 0.23534) + 
-      (SFz x 0.26876) + (REz x 0.43407) + (MHz x 0.48581)) × 10 + 50
 
