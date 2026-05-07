@@ -70,7 +70,7 @@ The Physical and Mental Component Summary scores were calculated using a weighte
 
 $$
 \text{PCS} = \left[
-(PF_z \times 0.42402) + (RP_z \times 0.31754) + (BP_z \times 0.31754) + (GH_z \times 0.24954) + (VT_z \times 0.02877) + (SF_z \times -0.00753) + (RE_z \times -0.19206) + (MH_z \times -0.2069) \right] \times 10 + 50
+(PF_z \times 0.42402) + (RP_z \times 0.35119) + (BP_z \times 0.31754) + (GH_z \times 0.24954) + (VT_z \times 0.02877) + (SF_z \times -0.00753) + (RE_z \times -0.19206) + (MH_z \times -0.22069) \right] \times 10 + 50
 $$
 
 
