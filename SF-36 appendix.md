@@ -17,15 +17,6 @@ The 36 item of the questionnaire then form 8 dimensions.
 | Mental Health (MH)        | 9b, 9c, 9d, 9f, 9h  |
 | Health Transition(HT)     |          2          |
 
-Physical Functioning (PF): item 3a, 3b, 3c, 3d, 3e, 3f, 3g, 3h, 3i  
-Role Physical (RP): item 4a, 4b, 4c, 4d  
-Bodily Pain (BP): item 7, 8  
-General Health (GH): item 1, 11a, 11b, 11c, 11d  
-Vitality (VT): item 9a, 9e, 9g, 9i  
-Social Functioning (SF): item 6, 10  
-Role Emotional (RE): item 5a, 5b, 5c  
-Mental Health (MH): item 9b, 9c, 9d, 9f, 9h  
-Health Transition(HT): item 2  
 
 ## Dimensions transformation procedure
 
