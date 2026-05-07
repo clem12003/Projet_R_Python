@@ -24,7 +24,7 @@ Then, this dimensions are grouped into two components, the Physical Component Su
 
 SF-36 domains were scored according to standard procedures. Scores of each dimension were first computed by summing the values of all items belonging to that dimension and were then linearly transformed to a 0–100 scale. Higher scores indicate better heath status.
 
-The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores. Then they were standardized unsing French reference population norms, with a mean of 50 and a standard deviation of 10.
+The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores. Then they were standardized unsing French reference population norms.
 
 Detailed information on SF-36 scoring procedures, including item mapping, score transformation, and computation of PCS and MCS, is provided in the `SF-36 appendix.md`.
 
@@ -66,8 +66,8 @@ $$
 In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.  
 **Output**: A standardized score for each dimension, ranging between 0 and 100  
 
-### 2.3.3. Visualization of the evolution of dimension scores between 3 and 12 months
-**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant  
+### 2.3.3. Visualization of the evolution of dimension scores between 3 and 12 months with a radar plot
+**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant, using a radar plot 
 **Input**: `bazRSF.csv` in `data` folder  
 **Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement or not  
 

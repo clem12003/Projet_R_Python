@@ -19,7 +19,9 @@ Health Transition(HT): item 2
 
 All the dimensions are normalized to have a score between 0 and 100 using this formula:
 
-Transformed score = ((Observed score - Minimum possible score) / (Maximum possible score - Minimum possible score)) × 100
+$$
+\text{Transformed score} = \frac{\text{Observed score} - \text{Minimum possible score}}{\text{Maximum possible score} - \text{Minimum possible score}} \times 100
+$$
 
 Here are the minimum and maximal posible scores for each dimension.
 
@@ -60,7 +62,9 @@ Maximum possible score: 5
 The SF-36 domain scores were then standardized into z-scores using reference values from the French general population in order to compute the Physical Component Summary (PCS) and Mental Component Summary (MCS).
 
 
-Z = Observed dimension score - mean of the French general population / standard deviation of the French general population
+$$
+Z = \frac{\text{Observed dimension score} - \text{Mean of the French general population}}{\text{Standard deviation of the French general population}}
+$$
 
 ### French general population norms for each dimension (INSEE 2002-2003):
 
@@ -75,7 +79,15 @@ Mental Health (MH): 66.7 ± 17.7
 
 ### PCS and MCS computation
 
-The Physical and Mental Component Summary scores were calculated using a weighted linear combination of standardized SF-36 domain scores.
+The Physical and Mental Component Summary scores were calculated using a weighted linear combination of standardized SF-36 domain scores. The coefficients correspond to empirically derived weights from the SF-36 scoring system, reflecting the contribution of each domain to overall health status, with scores standardized to a mean of 50 and SD of 10.  
+
+\[
+\text{PCS} = \left[(PF_z \times 0.42402) + (RP_z \times 0.31754) + (BP_z \times 0.31754) + (GH_z \times 0.24954) + (VT_z \times 0.02877) + (SF_z \times -0.00753) + (RE_z \times -0.19206) + (MH_z \times -0.2069)\right] \times 10 + 50
+\]
+
+\[
+\text{MCS} = \left[(PF_z \times -0.22999) + (RP_z \times -0.12329) + (BP_z \times -0.09731) + (GH_z \times -0.01571) + (VT_z \times 0.23534) + (SF_z \times 0.26876) + (RE_z \times 0.43407) + (MH_z \times 0.48581)\right] \times 10 + 50
+\]
 
 PCS = ((PFz × 0.42402) + (RPz × 0.31754) + (BPz × 0.31754) +  (GHz × 0.24954) + (VTz × 0.02877) + 
       (SFz × -0.00753) +  (REz × -0.19206) + (MHz × -0.2069)) x 10 + 50
