@@ -3,13 +3,11 @@
 # 1. Scientific problem 
 ## 1.1. Context
 
-Admission to an intensive care unit (ICU) is often associated with severe, life-threatening conditions requiring advanced medical support. While improvements in critical care have increased survival rates, many patients experience long-term consequences after discharge. These sequelae are commonly grouped under the term post-intensive care syndrome (PICS), which can significantly impact patients’ daily functioning and overall well-being.
+Advances in intensive care medicine have significantly reduced ICU mortality over recent decades, leading to a growing population of ICU survivors with persistent physical, psychological, and cognitive impairments after discharge (1, 16). These long-term consequences, commonly grouped under the term Post-Intensive Care Syndrome (PICS), may substantially alter patients’ health-related quality of life (HRQoL) (13).
 
-Quality of life (QoL) has therefore become a key outcome in the follow-up of ICU survivors. It is frequently assessed using standardized and validated tools such as the SF-36 (Short Form 36 Health Survey), which evaluates multiple dimensions including physical functioning, mental health, and social participation. Studies have shown that QoL is often impaired after ICU discharge, particularly in the first months, with variable recovery trajectories over time.
+According to the World Health Organization (WHO), quality of life refers to an individual’s perception of their position in life within the cultural and social context in which they live (8). In the medical field, HRQoL is considered a multidimensional concept reflecting the influence of health status and healthcare on physical, psychological, and social dimensions of health (9). Previous studies have shown that ICU survivors often report lower HRQoL scores than the general population, with only partial recovery over time (18, 19).
 
-Assessing QoL at different time points, such as 3 and 12 months after ICU discharge, allows for a better understanding of recovery patterns and the persistence of impairments. It also helps identify patients at risk of long-term disability and informs post-ICU care strategies.
-
-What we are looking for: Evaluate the Qol of ICU survivors at 3 and 12 months after discharge using the SF-36, and analyze its evolution over time.
+This project aims to describe the evolution of HRQoL at 3 and 12 months after ICU discharge using the SF-36 questionnaire.
 
 ## 1.2. Aim
 
@@ -47,7 +45,12 @@ Colums:
 `SF_12m_Q[y]`: SF-36 score at 12 months for question y (where y is the question number e.g. 1, 2, 3a, ...)  
 
 ## 2.3. Script organization
-### 2.3.1 Calculation and transformation of dimension scores at 3 and 12 months
+### 2.3.1. Recoding of SF-36 item scores
+**Aim**: To recode the SF-36 item responses so that higher scores correspond to a better health status accross all items.  
+**Input**: `bazRSF.csv` in `data` folder  
+**Output**: A set of SF-36 item scores in which higher values indicate better perceived health status.
+
+### 2.3.2. Calculation and transformation of dimension scores at 3 and 12 months
 **Aim**: To compute dimension scores and transform them onto a 0-100 scale for comparability and interpretation  
 **Input**: `bazRSF.csv` in `data` folder  
 **Calculation**:   
@@ -61,7 +64,7 @@ $$
 In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.  
 **Output**: A standardized score for each dimension, ranging between 0 and 100  
 
-### 2.3.2 Visualization of the evolution of dimension scores between 3 and 12 months
+### 2.3.3. Visualization of the evolution of dimension scores between 3 and 12 months
 **Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant  
 **Input**: `bazRSF.csv` in `data` folder  
 **Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement or not  

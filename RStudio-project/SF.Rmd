@@ -8,27 +8,271 @@ output:
     toc: false
     number_sections: true
 ---
+# Impaired quality of life after intensive care
+
+# 1. Scientific problem 
+## 1.1. Context
+
+Advances in intensive care medicine have significantly reduced ICU mortality over recent decades, leading to a growing population of ICU survivors with persistent physical, psychological, and cognitive impairments after discharge (1, 16). These long-term consequences, commonly grouped under the term Post-Intensive Care Syndrome (PICS), may substantially alter patients’ health-related quality of life (HRQoL) (13).
+
+According to the World Health Organization (WHO), quality of life refers to an individual’s perception of their position in life within the cultural and social context in which they live (8). In the medical field, HRQoL is considered a multidimensional concept reflecting the influence of health status and healthcare on physical, psychological, and social dimensions of health (9). Previous studies have shown that ICU survivors often report lower HRQoL scores than the general population, with only partial recovery over time (18, 19).
+
+This project aims to describe the evolution of HRQoL at 3 and 12 months after ICU discharge using the SF-36 questionnaire.
+
+## 1.2. Aim
+
+The aim of this study is to evaluate the quality of life of ICU survivors at 3 and 12 months after discharge, using the SF-36 questionnaire. Specifically, it seeks to assess changes over time in the different dimensions of quality of life, including physical and mental components, in order to better understand recovery trajectories following critical illness.
+
+## 1.3. Method
+
+All ICU survivors were contacted by mail 3 and 12 month after hospital discharge and were asked to complete the SF-36 questionnaire.
+
+### Outcome measure
+
+Quality of life was assesed using the SF-36 questionnaire. This questionnaire evaluate multiple dimensions of quality of life including : Physical Functionning (PF), Role Physical (RP), Bodily Pain (BP), General Health (GH), Vitality (VT), Social Functioning (SF), Role Emotional (RE), Mental Health (MH). 
+Then, this dimensions are grouped into two components, the Physical Component Summary (PCS), including PF, RP, BP and GH, and the Mental Component Summary (MCS), including VT, SF, RE and MH.
+
+SF-36 domains were scored according to standard procedures. Scores of each dimension were first computed by summing the values of all items belonging to that dimension and were then linearly transformed to a 0–100 scale. Higher scores indicate better heath status.
+
+The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores. Then they were standardized unsing French reference population norms, with a mean of 50 and a standard deviation of 10.
+
+Detailed information on SF-36 scoring procedures, including item mapping, score transformation, and computation of PCS and MCS, is provided in the `SF-36 appendix.md`.
+
+### Participants
+
+479 patients who survived ICU and responded to the SF-36 at both 3 and 12 months were included in the study.
+
+# 2. RStudio project
+## 2.1. Aim
+
+The aim of this project is to assess SF-36 dimension scores at 3 and 12 months after ICU discharge. In addition, a radar chart will be generated to visualize changes in quality of life dimensions over time.
+
+## 2.2. Data organization
+File: `bazRSF.csv`  
+Colums:  
+`ID`: Patient ID, corresponding to their number of inclusion  
+`SF_3m_Q[y]`: SF-36 score at 3 months for question y (where y is the question number e.g. 1, 2, 3a, ...)   
+`SF_12m_Q[y]`: SF-36 score at 12 months for question y (where y is the question number e.g. 1, 2, 3a, ...)  
+
+## 2.3. Script organization
+### 2.3.1. Recoding of SF-36 item scores
+**Aim**: To recode the SF-36 item responses so that higher scores correspond to a better health status accross all items.  
+**Input**: `bazRSF.csv` in `data` folder  
+**Output**: A set of SF-36 item scores in which higher values indicate better perceived health status.
+
+### 2.3.2. Calculation and transformation of dimension scores at 3 and 12 months
+**Aim**: To compute dimension scores and transform them onto a 0-100 scale for comparability and interpretation  
+**Input**: `bazRSF.csv` in `data` folder  
+**Calculation**:   
+Raw scores for each dimension are first computed by summing the values of all items belonging to that dimension.  
+Scores are then linearly transformed to a 0–100 scale using the following formula:  
+
+$$
+\text{Transformed score} = \frac{\text{Observed score} - \text{Minimum possible score}}{\text{Maximum possible score} - \text{Minimum possible score}} \times 100
+$$
+
+In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.  
+**Output**: A standardized score for each dimension, ranging between 0 and 100  
+
+### 2.3.3. Visualization of the evolution of dimension scores between 3 and 12 months
+**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant  
+**Input**: `bazRSF.csv` in `data` folder  
+**Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement or not  
+
+
+
 
 ##  Import the data
 
 ```{r}
-bazR <- read.csv("data/bazRSF_reseau.csv", header = TRUE, sep = ";")
+bazR <- read.csv("data/bazRSF.csv", header = TRUE, sep = ";")
+
 ```
 
+
+
+```{r}
+# Recode items for 3 months
+bazR$SF_3m_Q1[bazR$SF_3m_Q1==1]<-5
+bazR$SF_3m_Q1[bazR$SF_3m_Q1==2]<-4
+bazR$SF_3m_Q1[bazR$SF_3m_Q1==3]<-3
+bazR$SF_3m_Q1[bazR$SF_3m_Q1==4]<-2
+bazR$SF_3m_Q1[bazR$SF_3m_Q1==5]<-1
+
+   
+bazR$SF_3m_Q2[bazR$SF_3m_Q2==1]<-5
+bazR$SF_3m_Q2[bazR$SF_3m_Q2==2]<-4
+bazR$SF_3m_Q2[bazR$SF_3m_Q2==3]<-3
+bazR$SF_3m_Q2[bazR$SF_3m_Q2==4]<-2
+bazR$SF_3m_Q2[bazR$SF_3m_Q2==5]<-1
+
+
+bazR$SF_3m_Q6[bazR$SF_3m_Q6==1]<-5
+bazR$SF_3m_Q6[bazR$SF_3m_Q6==2]<-4
+bazR$SF_3m_Q6[bazR$SF_3m_Q6==3]<-3
+bazR$SF_3m_Q6[bazR$SF_3m_Q6==4]<-2
+bazR$SF_3m_Q6[bazR$SF_3m_Q6==5]<-1
+
+ 
+bazR$SF_3m_Q7[bazR$SF_3m_Q7==1]<-6
+bazR$SF_3m_Q7[bazR$SF_3m_Q7==2]<-5
+bazR$SF_3m_Q7[bazR$SF_3m_Q7==3]<-4
+bazR$SF_3m_Q7[bazR$SF_3m_Q7==4]<-3
+bazR$SF_3m_Q7[bazR$SF_3m_Q7==5]<-2
+bazR$SF_3m_Q7[bazR$SF_3m_Q7==6]<-1
+
+
+bazR$SF_3m_Q8[bazR$SF_3m_Q8==1]<-5
+bazR$SF_3m_Q8[bazR$SF_3m_Q8==2]<-4
+bazR$SF_3m_Q8[bazR$SF_3m_Q8==3]<-3
+bazR$SF_3m_Q8[bazR$SF_3m_Q8==4]<-2
+bazR$SF_3m_Q8[bazR$SF_3m_Q8==5]<-1
+ 
+
+bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==1]<-6
+bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==2]<-5
+bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==3]<-4
+bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==4]<-3
+bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==5]<-2
+bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==6]<-1
+
+
+bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==1]<-6
+bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==2]<-5
+bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==3]<-4
+bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==4]<-3
+bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==5]<-2
+bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==6]<-1
+
+
+bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==1]<-6
+bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==2]<-5
+bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==3]<-4
+bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==4]<-5
+bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==5]<-2
+bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==6]<-1
+
+
+bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==1]<-6
+bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==2]<-5
+bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==3]<-4
+bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==4]<-3
+bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==5]<-2
+bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==6]<-1
+
+ 
+bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==1]<-5
+bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==2]<-4
+bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==3]<-3
+bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==4]<-2
+bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==5]<-1
+
+ 
+bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==1]<-5
+bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==2]<-4
+bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==3]<-3
+bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==4]<-2
+bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==5]<-1
+
+
+# Recode items for 12 months
+
+bazR$SF_12m_Q1[bazR$SF_12m_Q1==1]<-5
+bazR$SF_12m_Q1[bazR$SF_12m_Q1==2]<-4
+bazR$SF_12m_Q1[bazR$SF_12m_Q1==3]<-3
+bazR$SF_12m_Q1[bazR$SF_12m_Q1==4]<-2
+bazR$SF_12m_Q1[bazR$SF_12m_Q1==5]<-1
+
+   
+bazR$SF_12m_Q2[bazR$SF_12m_Q2==1]<-5
+bazR$SF_12m_Q2[bazR$SF_12m_Q2==2]<-4
+bazR$SF_12m_Q2[bazR$SF_12m_Q2==3]<-3
+bazR$SF_12m_Q2[bazR$SF_12m_Q2==4]<-2
+bazR$SF_12m_Q2[bazR$SF_12m_Q2==5]<-1
+
+
+bazR$SF_12m_Q6[bazR$SF_12m_Q6==1]<-5
+bazR$SF_12m_Q6[bazR$SF_12m_Q6==2]<-4
+bazR$SF_12m_Q6[bazR$SF_12m_Q6==3]<-3
+bazR$SF_12m_Q6[bazR$SF_12m_Q6==4]<-2
+bazR$SF_12m_Q6[bazR$SF_12m_Q6==5]<-1
+
+ 
+bazR$SF_12m_Q7[bazR$SF_12m_Q7==1]<-6
+bazR$SF_12m_Q7[bazR$SF_12m_Q7==2]<-5
+bazR$SF_12m_Q7[bazR$SF_12m_Q7==3]<-4
+bazR$SF_12m_Q7[bazR$SF_12m_Q7==4]<-3
+bazR$SF_12m_Q7[bazR$SF_12m_Q7==5]<-2
+bazR$SF_12m_Q7[bazR$SF_12m_Q7==6]<-1
+
+
+bazR$SF_12m_Q8[bazR$SF_12m_Q8==1]<-5
+bazR$SF_12m_Q8[bazR$SF_12m_Q8==2]<-4
+bazR$SF_12m_Q8[bazR$SF_12m_Q8==3]<-3
+bazR$SF_12m_Q8[bazR$SF_12m_Q8==4]<-2
+bazR$SF_12m_Q8[bazR$SF_12m_Q8==5]<-1
+ 
+
+bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==1]<-6
+bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==2]<-5
+bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==3]<-4
+bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==4]<-3
+bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==5]<-2
+bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==6]<-1
+
+
+bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==1]<-6
+bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==2]<-5
+bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==3]<-4
+bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==4]<-3
+bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==5]<-2
+bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==6]<-1
+
+
+bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==1]<-6
+bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==2]<-5
+bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==3]<-4
+bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==4]<-5
+bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==5]<-2
+bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==6]<-1
+
+
+bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==1]<-6
+bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==2]<-5
+bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==3]<-4
+bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==4]<-3
+bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==5]<-2
+bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==6]<-1
+
+ 
+bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==1]<-5
+bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==2]<-4
+bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==3]<-3
+bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==4]<-2
+bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==5]<-1
+
+ 
+bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==1]<-5
+bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==2]<-4
+bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==3]<-3
+bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==4]<-2
+bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==5]<-1
+```
 
 ## Calculation of dimension scores at 3 months
 ### Imputation of missing data
 
 ```{r}
 items_sf36 <- list(
-  PF = c("SF_3mQ3a", "SF_3mQ3b","SF_3mQ3c","SF_3mQ3d", "SF_3mQ3e", "SF_3mQ3f","SF_3mQ3g", "SF_3mQ3h","SF_3mQ3i","SF_3mQ3j"),
-  RP = c("SF_3mQ4a", "SF_3mQ4b","SF_3mQ4c","SF_3mQ4d"),
-  BP = c("SF_3mQ7","SF_3mQ8"),
-  GH = c("SF_3mQ1","SF_3mQ11a","SF_3mQ11b", "SF_3mQ11c","SF_3mQ11d"),
-  VT = c("SF_3mQ9a", "SF_3mQ9e","SF_3mQ9g","SF_3mQ9i"),
-  SF = c("SF_3mQ6", "SF_3mQ10"),
-  RE = c("SF_3mQ5a","SF_3mQ5b","SF_3mQ5c"),
-  MH = c("SF_3mQ9b","SF_3mQ9c","SF_3mQ9d","SF_3mQ9f","SF_3mQ9h")
+  PF = c("SF_3m_Q3a", "SF_3m_Q3b","SF_3m_Q3c","SF_3m_Q3d", "SF_3m_Q3e", "SF_3m_Q3f","SF_3m_Q3g",
+         "SF_3m_Q3h","SF_3m_Q3i","SF_3m_Q3j"),
+  RP = c("SF_3m_Q4a", "SF_3m_Q4b","SF_3m_Q4c","SF_3m_Q4d"),
+  BP = c("SF_3m_Q7","SF_3m_Q8"),
+  GH = c("SF_3m_Q1","SF_3m_Q11a","SF_3m_Q11b", "SF_3m_Q11c","SF_3m_Q11d"),
+  VT = c("SF_3m_Q9a", "SF_3m_Q9e","SF_3m_Q9g","SF_3m_Q9i"),
+  SF = c("SF_3m_Q6", "SF_3m_Q10"),
+  RE = c("SF_3m_Q5a","SF_3m_Q5b","SF_3m_Q5c"),
+  MH = c("SF_3m_Q9b","SF_3m_Q9c","SF_3m_Q9d","SF_3m_Q9f","SF_3m_Q9h")
 )
 
 impute_sf36 <- function(df, items_list) {
@@ -70,49 +314,49 @@ In this transformed scale, 0 represents the worst possible health status and 100
 
 ```{r}
 # Dimension PF
-aPF_3m <- (bazR$SF_3mQ3a + bazR$SF_3mQ3b + bazR$SF_3mQ3c + bazR$SF_3mQ3d + bazR$SF_3mQ3e + bazR$SF_3mQ3f
-            + bazR$SF_3mQ3g + bazR$SF_3mQ3h + bazR$SF_3mQ3i + bazR$SF_3mQ3j)
+aPF_3m <- (bazR$SF_3m_Q3a + bazR$SF_3m_Q3b + bazR$SF_3m_Q3c + bazR$SF_3m_Q3d + bazR$SF_3m_Q3e + bazR$SF_3m_Q3f
+            + bazR$SF_3m_Q3g + bazR$SF_3m_Q3h + bazR$SF_3m_Q3i + bazR$SF_3m_Q3j)
 
 bazR$PFtransformed_3m <- ((aPF_3m-10)/20)*100 
 
 
 # Dimension RP  
-aRP_3m <- (bazR$SF_3mQ4a + bazR$SF_3mQ4b + bazR$SF_3mQ4c + bazR$SF_3mQ4d)
+aRP_3m <- (bazR$SF_3m_Q4a + bazR$SF_3m_Q4b + bazR$SF_3m_Q4c + bazR$SF_3m_Q4d)
 
 bazR$RPtransformed_3m<-((aRP_3m-4)/4)*100
 
 # Dimension BP
-aBP_3m <- (bazR$SF_3mQ7 + bazR$SF_3mQ8)
+aBP_3m <- (bazR$SF_3m_Q7 + bazR$SF_3m_Q8)
 
 bazR$BPtransformed_3m <- ((aBP_3m-2)/10)*100
 
 # Dimension GH
-aGH_3m <- (bazR$SF_3mQ1 + bazR$SF_3mQ11a + bazR$SF_3mQ11b + bazR$SF_3mQ11c + bazR$SF_3mQ11d)
+aGH_3m <- (bazR$SF_3m_Q1 + bazR$SF_3m_Q11a + bazR$SF_3m_Q11b + bazR$SF_3m_Q11c + bazR$SF_3m_Q11d)
 
 bazR$GHtransformed_3m <- ((aGH_3m-5)/20)*100
 
 # Dimension VT
-aVT_3m <- (bazR$SF_3mQ9a + bazR$SF_3mQ9e + bazR$SF_3mQ9g + bazR$SF_3mQ9i)
+aVT_3m <- (bazR$SF_3m_Q9a + bazR$SF_3m_Q9e + bazR$SF_3m_Q9g + bazR$SF_3m_Q9i)
 
 bazR$VTtransformed_3m <- ((aVT_3m-4)/20)*100
 
 # Dimension SF
-aSF_3m <- (bazR$SF_3mQ6 + bazR$SF_3mQ10)
+aSF_3m <- (bazR$SF_3m_Q6 + bazR$SF_3m_Q10)
 
 bazR$SFtransformed_3m <- ((aSF_3m-2)/8)*100
 
 #calcul dimension RE
-aRE_3m <- (bazR$SF_3mQ5a + bazR$SF_3mQ5b + bazR$SF_3mQ5c)
+aRE_3m <- (bazR$SF_3m_Q5a + bazR$SF_3m_Q5b + bazR$SF_3m_Q5c)
 
 bazR$REtransformed_3m <- ((aRE_3m-3)/3)*100
 
 # Dimension MH
-aMH_3m <- (bazR$SF_3mQ9b + bazR$SF_3mQ9c + bazR$SF_3mQ9d + bazR$SF_3mQ9f + bazR$SF_3mQ9h)
+aMH_3m <- (bazR$SF_3m_Q9b + bazR$SF_3m_Q9c + bazR$SF_3m_Q9d + bazR$SF_3m_Q9f + bazR$SF_3m_Q9h)
 
 bazR$MHtransformed_3m <- ((aMH_3m-5)/25)*100
 
 # Dimension HT
-aHT_3m <- bazR$SF_3mQ2
+aHT_3m <- bazR$SF_3m_Q2
 
 bazR$HTtransformed_3m <- ((aHT_3m-1)/4)*100
 
@@ -125,15 +369,15 @@ bazR$HTtransformed_3m <- ((aHT_3m-1)/4)*100
 ```{r}
 
 items_sf36 <- list(
-  PF = c("SF_12mQ3a", "SF_12mQ3b","SF_12mQ3c","SF_12mQ3d", "SF_12mQ3e", "SF_12mQ3f",
-         "SF_12mQ3g", "SF_12mQ3h","SF_12mQ3i","SF_12mQ3j"),
-  RP = c("SF_12mQ4a", "SF_12mQ4b", "SF_12mQ4c","SF_12mQ4d"),
-  BP = c("SF_12mQ7","SF_12mQ8"),
-  GH = c("SF_12mQ1","SF_12mQ11a","SF_12mQ11b", "SF_12mQ11c","SF_12mQ11d"),
-  VT = c("SF_12mQ9a", "SF_12mQ9e","SF_12mQ9g","SF_12mQ9i"),
-  SF = c("SF_12mQ6", "SF_12mQ10"),
-  RE = c("SF_12mQ5a","SF_12mQ5b","SF_12mQ5c"),
-  MH = c("SF_12mQ9b","SF_12mQ9c","SF_12mQ9d","SF_12mQ9f","SF_12mQ9h")
+  PF = c("SF_12m_Q3a", "SF_12m_Q3b","SF_12m_Q3c","SF_12m_Q3d", "SF_12m_Q3e", "SF_12m_Q3f",
+         "SF_12m_Q3g", "SF_12m_Q3h","SF_12m_Q3i","SF_12m_Q3j"),
+  RP = c("SF_12m_Q4a", "SF_12m_Q4b", "SF_12m_Q4c","SF_12m_Q4d"),
+  BP = c("SF_12m_Q7","SF_12m_Q8"),
+  GH = c("SF_12m_Q1","SF_12m_Q11a","SF_12m_Q11b", "SF_12m_Q11c","SF_12m_Q11d"),
+  VT = c("SF_12m_Q9a", "SF_12m_Q9e","SF_12m_Q9g","SF_12m_Q9i"),
+  SF = c("SF_12m_Q6", "SF_12m_Q10"),
+  RE = c("SF_12m_Q5a","SF_12m_Q5b","SF_12m_Q5c"),
+  MH = c("SF_12m_Q9b","SF_12m_Q9c","SF_12m_Q9d","SF_12m_Q9f","SF_12m_Q9h")
 )
 
 impute_sf36 <- function(df, items_list) {
@@ -177,48 +421,48 @@ In this transformed scale, 0 represents the worst possible health status and 100
 
 ```{r}
 # Dimension PF
-aPF_12m <- (bazR$SF_12mQ3a + bazR$SF_12mQ3b + bazR$SF_12mQ3c + bazR$SF_12mQ3d + bazR$SF_12mQ3e 
-            + bazR$SF_12mQ3f + bazR$SF_12mQ3g + bazR$SF_12mQ3h + bazR$SF_12mQ3i + bazR$SF_12mQ3j)
+aPF_12m <- (bazR$SF_12m_Q3a + bazR$SF_12m_Q3b + bazR$SF_12m_Q3c + bazR$SF_12m_Q3d + bazR$SF_12m_Q3e 
+            + bazR$SF_12m_Q3f + bazR$SF_12m_Q3g + bazR$SF_12m_Q3h + bazR$SF_12m_Q3i + bazR$SF_12m_Q3j)
 
 bazR$PFtransformed_12m<-((aPF_12m-10)/20)*100 
 
 # Dimension RP
-aRP_12m <- (bazR$SF_12mQ4a + bazR$SF_12mQ4b + bazR$SF_12mQ4c + bazR$SF_12mQ4d)
+aRP_12m <- (bazR$SF_12m_Q4a + bazR$SF_12m_Q4b + bazR$SF_12m_Q4c + bazR$SF_12m_Q4d)
 
 bazR$RPtransformed_12m <- ((aRP_12m-4)/4)*100
 
 # Dimension BP
-aBP_12m <- (bazR$SF_12mQ7 + bazR$SF_12mQ8)
+aBP_12m <- (bazR$SF_12m_Q7 + bazR$SF_12m_Q8)
 
 bazR$BPtransformed_12m <- ((aBP_12m-2)/10)*100
 
 # Dimension GH
-aGH_12m <- (bazR$SF_12mQ1 + bazR$SF_12mQ11a + bazR$SF_12mQ11b + bazR$SF_12mQ11c + bazR$SF_12mQ11d)
+aGH_12m <- (bazR$SF_12m_Q1 + bazR$SF_12m_Q11a + bazR$SF_12m_Q11b + bazR$SF_12m_Q11c + bazR$SF_12m_Q11d)
 
 bazR$GHtransformed_12m <- ((aGH_12m-5)/20)*100
 
 # Dimension VT
-aVT_12m <- (bazR$SF_12mQ9a + bazR$SF_12mQ9e + bazR$SF_12mQ9g + bazR$SF_12mQ9i)
+aVT_12m <- (bazR$SF_12m_Q9a + bazR$SF_12m_Q9e + bazR$SF_12m_Q9g + bazR$SF_12m_Q9i)
 
 bazR$VTtransformed_12m <- ((aVT_12m-4)/20)*100
 
 # Dimension SF
-aSF_12m <- (bazR$SF_12mQ6 + bazR$SF_12mQ10)
+aSF_12m <- (bazR$SF_12m_Q6 + bazR$SF_12m_Q10)
 
 bazR$SFtransformed_12m <- ((aSF_12m-2)/8)*100
 
 # Dimension RE
-aRE_12m <- (bazR$SF_12mQ5a + bazR$SF_12mQ5b + bazR$SF_12mQ5c)
+aRE_12m <- (bazR$SF_12m_Q5a + bazR$SF_12m_Q5b + bazR$SF_12m_Q5c)
 
 bazR$REtransformed_12m <- ((aRE_12m-3)/3)*100
 
 # Dimension MH
-aMH_12m <- (bazR$SF_12mQ9b + bazR$SF_12mQ9c + bazR$SF_12mQ9d + bazR$SF_12mQ9f + bazR$SF_12mQ9h)
+aMH_12m <- (bazR$SF_12m_Q9b + bazR$SF_12m_Q9c + bazR$SF_12m_Q9d + bazR$SF_12m_Q9f + bazR$SF_12m_Q9h)
 
 bazR$MHtransformed_12m <- ((aMH_12m-5)/25)*100
 
 # Dimension HT
-aHT_12m <- bazR$SF_12mQ2
+aHT_12m <- bazR$SF_12m_Q2
 
 bazR$HTtransformed_12m <- ((aHT_12m-1)/4)*100
 
@@ -321,6 +565,6 @@ dev.off()
 
 ## Export data
 ```{r}
-write.csv(bazR, "results/bazR_scores.csv", row.names = FALSE)
+write.csv(bazR, "results/bazP_scores.csv", row.names = FALSE)
 ```
 
