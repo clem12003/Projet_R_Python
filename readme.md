@@ -32,6 +32,8 @@ Detailed information on SF-36 scoring procedures, including item mapping, score 
 
 479 patients who survived ICU and responded to the SF-36 at both 3 and 12 months were included in the study.
 
+The dataset used in this repository is simulated and contains 30 fictitious observations created for demonstration and reproducibility purposes. The methodological description reflects the original study design, but the data do not correspond to real patients.
+
 # 2. RStudio project
 ## 2.1. Aim
 
@@ -105,6 +107,7 @@ The reference values from the French general population are provided in the `SF-
 
 ## 3.4. Conclusion
 
+This workflow provides a structured approach to analyzing longitudinal changes in health-related quality of life after intensive care. It can be used as a reproducible framework for SF-36 data processing, visualization, and statistical comparison over time.
 
 ## 4. References
 1. Lilly CM, Swami S, Liu X, Riker RR, Badawi O. Five-Year Trends of Critical Care Practice and Outcomes. Chest. oct 2017;152(4):723‑35. doi:10.1016/j.chest.2017.06.050

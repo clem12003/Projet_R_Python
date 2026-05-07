@@ -74,8 +74,8 @@ $$
 In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.  
 **Output**: A standardized score for each dimension, ranging between 0 and 100  
 
-### 2.3.3. Visualization of the evolution of dimension scores between 3 and 12 months
-**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant  
+### 2.3.3. Visualization of the evolution of dimension scores between 3 and 12 months with a radar plot
+**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant, using a radar plot  
 **Input**: `bazRSF.csv` in `data` folder  
 **Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement or not  
 
@@ -107,180 +107,213 @@ bazR <- read.csv("data/bazRSF.csv", header = TRUE, sep = ";")
 ```
 
 ### 3.2. Recoding of SF-36 item scores
+Item responses are recoded so that higher values reflect better health status across all SF-36 dimensions, ensuring comparability between items and correct interpretation of scores. The items that need to be recoded are Q1, Q2, Q6, Q7, Q8, Q9a, Q9d, Q9e, Q9h, Q11b and Q11d at both 3 and 12 months.
 
 ```{r}
-# Recode items for 3 months
-bazR$SF_3m_Q1[bazR$SF_3m_Q1==1]<-5
-bazR$SF_3m_Q1[bazR$SF_3m_Q1==2]<-4
-bazR$SF_3m_Q1[bazR$SF_3m_Q1==3]<-3
-bazR$SF_3m_Q1[bazR$SF_3m_Q1==4]<-2
-bazR$SF_3m_Q1[bazR$SF_3m_Q1==5]<-1
+# 3 months
 
-   
-bazR$SF_3m_Q2[bazR$SF_3m_Q2==1]<-5
-bazR$SF_3m_Q2[bazR$SF_3m_Q2==2]<-4
-bazR$SF_3m_Q2[bazR$SF_3m_Q2==3]<-3
-bazR$SF_3m_Q2[bazR$SF_3m_Q2==4]<-2
-bazR$SF_3m_Q2[bazR$SF_3m_Q2==5]<-1
+## Store original responses to avoid overwriting values during reverse coding
+raw_3m_Q1 <- bazR$SF_3m_Q1
 
+## Reverse coding of SF-36 item (higher score = better health status)
+bazR$SF_3m_Q1[raw_3m_Q1 == 1] <- 5
+bazR$SF_3m_Q1[raw_3m_Q1 == 2] <- 4
+bazR$SF_3m_Q1[raw_3m_Q1 == 3] <- 3
+bazR$SF_3m_Q1[raw_3m_Q1 == 4] <- 2
+bazR$SF_3m_Q1[raw_3m_Q1 == 5] <- 1
 
-bazR$SF_3m_Q6[bazR$SF_3m_Q6==1]<-5
-bazR$SF_3m_Q6[bazR$SF_3m_Q6==2]<-4
-bazR$SF_3m_Q6[bazR$SF_3m_Q6==3]<-3
-bazR$SF_3m_Q6[bazR$SF_3m_Q6==4]<-2
-bazR$SF_3m_Q6[bazR$SF_3m_Q6==5]<-1
-
- 
-bazR$SF_3m_Q7[bazR$SF_3m_Q7==1]<-6
-bazR$SF_3m_Q7[bazR$SF_3m_Q7==2]<-5
-bazR$SF_3m_Q7[bazR$SF_3m_Q7==3]<-4
-bazR$SF_3m_Q7[bazR$SF_3m_Q7==4]<-3
-bazR$SF_3m_Q7[bazR$SF_3m_Q7==5]<-2
-bazR$SF_3m_Q7[bazR$SF_3m_Q7==6]<-1
+# This coding procedure is applied to all SF-36 items with reversed scales at 3 and 12 months
+raw_3m_Q2 <- bazR$SF_3m_Q2
+bazR$SF_3m_Q2[raw_3m_Q2 == 1] <- 5
+bazR$SF_3m_Q2[raw_3m_Q2 == 2] <- 4
+bazR$SF_3m_Q2[raw_3m_Q2 == 3] <- 3
+bazR$SF_3m_Q2[raw_3m_Q2 == 4] <- 2
+bazR$SF_3m_Q2[raw_3m_Q2 == 5] <- 1
 
 
-bazR$SF_3m_Q8[bazR$SF_3m_Q8==1]<-5
-bazR$SF_3m_Q8[bazR$SF_3m_Q8==2]<-4
-bazR$SF_3m_Q8[bazR$SF_3m_Q8==3]<-3
-bazR$SF_3m_Q8[bazR$SF_3m_Q8==4]<-2
-bazR$SF_3m_Q8[bazR$SF_3m_Q8==5]<-1
- 
-
-bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==1]<-6
-bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==2]<-5
-bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==3]<-4
-bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==4]<-3
-bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==5]<-2
-bazR$SF_3m_Q9a[bazR$SF_3m_Q9a==6]<-1
+raw_3m_Q6 <- bazR$SF_3m_Q6
+bazR$SF_3m_Q6[raw_3m_Q6 == 1] <- 5
+bazR$SF_3m_Q6[raw_3m_Q6 == 2] <- 4
+bazR$SF_3m_Q6[raw_3m_Q6 == 3] <- 3
+bazR$SF_3m_Q6[raw_3m_Q6 == 4] <- 2
+bazR$SF_3m_Q6[raw_3m_Q6 == 5] <- 1
 
 
-bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==1]<-6
-bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==2]<-5
-bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==3]<-4
-bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==4]<-3
-bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==5]<-2
-bazR$SF_3m_Q9d[bazR$SF_3m_Q9d==6]<-1
+raw_3m_Q7 <- bazR$SF_3m_Q7
+bazR$SF_3m_Q7[raw_3m_Q7 == 1] <- 6
+bazR$SF_3m_Q7[raw_3m_Q7 == 2] <- 5
+bazR$SF_3m_Q7[raw_3m_Q7 == 3] <- 4
+bazR$SF_3m_Q7[raw_3m_Q7 == 4] <- 3
+bazR$SF_3m_Q7[raw_3m_Q7 == 5] <- 2
+bazR$SF_3m_Q7[raw_3m_Q7 == 6] <- 1
 
 
-bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==1]<-6
-bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==2]<-5
-bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==3]<-4
-bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==4]<-5
-bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==5]<-2
-bazR$SF_3m_Q9e[bazR$SF_3m_Q9e==6]<-1
+raw_3m_Q8 <- bazR$SF_3m_Q8
+bazR$SF_3m_Q8[raw_3m_Q8 == 1] <- 5
+bazR$SF_3m_Q8[raw_3m_Q8 == 2] <- 4
+bazR$SF_3m_Q8[raw_3m_Q8 == 3] <- 3
+bazR$SF_3m_Q8[raw_3m_Q8 == 4] <- 2
+bazR$SF_3m_Q8[raw_3m_Q8 == 5] <- 1
 
 
-bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==1]<-6
-bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==2]<-5
-bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==3]<-4
-bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==4]<-3
-bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==5]<-2
-bazR$SF_3m_Q9h[bazR$SF_3m_Q9h==6]<-1
-
- 
-bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==1]<-5
-bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==2]<-4
-bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==3]<-3
-bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==4]<-2
-bazR$SF_3m_Q11b[bazR$SF_3m_Q11b==5]<-1
-
- 
-bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==1]<-5
-bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==2]<-4
-bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==3]<-3
-bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==4]<-2
-bazR$SF_3m_Q11d[bazR$SF_3m_Q11d==5]<-1
+raw_3m_Q9a <- bazR$SF_3m_Q9a
+bazR$SF_3m_Q9a[raw_3m_Q9a == 1] <- 6
+bazR$SF_3m_Q9a[raw_3m_Q9a == 2] <- 5
+bazR$SF_3m_Q9a[raw_3m_Q9a == 3] <- 4
+bazR$SF_3m_Q9a[raw_3m_Q9a == 4] <- 3
+bazR$SF_3m_Q9a[raw_3m_Q9a == 5] <- 2
+bazR$SF_3m_Q9a[raw_3m_Q9a == 6] <- 1
 
 
-# Recode items for 12 months
-
-bazR$SF_12m_Q1[bazR$SF_12m_Q1==1]<-5
-bazR$SF_12m_Q1[bazR$SF_12m_Q1==2]<-4
-bazR$SF_12m_Q1[bazR$SF_12m_Q1==3]<-3
-bazR$SF_12m_Q1[bazR$SF_12m_Q1==4]<-2
-bazR$SF_12m_Q1[bazR$SF_12m_Q1==5]<-1
-
-   
-bazR$SF_12m_Q2[bazR$SF_12m_Q2==1]<-5
-bazR$SF_12m_Q2[bazR$SF_12m_Q2==2]<-4
-bazR$SF_12m_Q2[bazR$SF_12m_Q2==3]<-3
-bazR$SF_12m_Q2[bazR$SF_12m_Q2==4]<-2
-bazR$SF_12m_Q2[bazR$SF_12m_Q2==5]<-1
+raw_3m_Q9d <- bazR$SF_3m_Q9d
+bazR$SF_3m_Q9d[raw_3m_Q9d == 1] <- 6
+bazR$SF_3m_Q9d[raw_3m_Q9d == 2] <- 5
+bazR$SF_3m_Q9d[raw_3m_Q9d == 3] <- 4
+bazR$SF_3m_Q9d[raw_3m_Q9d == 4] <- 3
+bazR$SF_3m_Q9d[raw_3m_Q9d == 5] <- 2
+bazR$SF_3m_Q9d[raw_3m_Q9d == 6] <- 1
 
 
-bazR$SF_12m_Q6[bazR$SF_12m_Q6==1]<-5
-bazR$SF_12m_Q6[bazR$SF_12m_Q6==2]<-4
-bazR$SF_12m_Q6[bazR$SF_12m_Q6==3]<-3
-bazR$SF_12m_Q6[bazR$SF_12m_Q6==4]<-2
-bazR$SF_12m_Q6[bazR$SF_12m_Q6==5]<-1
-
- 
-bazR$SF_12m_Q7[bazR$SF_12m_Q7==1]<-6
-bazR$SF_12m_Q7[bazR$SF_12m_Q7==2]<-5
-bazR$SF_12m_Q7[bazR$SF_12m_Q7==3]<-4
-bazR$SF_12m_Q7[bazR$SF_12m_Q7==4]<-3
-bazR$SF_12m_Q7[bazR$SF_12m_Q7==5]<-2
-bazR$SF_12m_Q7[bazR$SF_12m_Q7==6]<-1
+raw_3m_Q9e <- bazR$SF_3m_Q9e
+bazR$SF_3m_Q9e[raw_3m_Q9e == 1] <- 6
+bazR$SF_3m_Q9e[raw_3m_Q9e == 2] <- 5
+bazR$SF_3m_Q9e[raw_3m_Q9e == 3] <- 4
+bazR$SF_3m_Q9e[raw_3m_Q9e == 4] <- 3
+bazR$SF_3m_Q9e[raw_3m_Q9e == 5] <- 2
+bazR$SF_3m_Q9e[raw_3m_Q9e == 6] <- 1
 
 
-bazR$SF_12m_Q8[bazR$SF_12m_Q8==1]<-5
-bazR$SF_12m_Q8[bazR$SF_12m_Q8==2]<-4
-bazR$SF_12m_Q8[bazR$SF_12m_Q8==3]<-3
-bazR$SF_12m_Q8[bazR$SF_12m_Q8==4]<-2
-bazR$SF_12m_Q8[bazR$SF_12m_Q8==5]<-1
- 
-
-bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==1]<-6
-bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==2]<-5
-bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==3]<-4
-bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==4]<-3
-bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==5]<-2
-bazR$SF_12m_Q9a[bazR$SF_12m_Q9a==6]<-1
+raw_3m_Q9h <- bazR$SF_3m_Q9h
+bazR$SF_3m_Q9h[raw_3m_Q9h == 1] <- 6
+bazR$SF_3m_Q9h[raw_3m_Q9h == 2] <- 5
+bazR$SF_3m_Q9h[raw_3m_Q9h == 3] <- 4
+bazR$SF_3m_Q9h[raw_3m_Q9h == 4] <- 3
+bazR$SF_3m_Q9h[raw_3m_Q9h == 5] <- 2
+bazR$SF_3m_Q9h[raw_3m_Q9h == 6] <- 1
 
 
-bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==1]<-6
-bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==2]<-5
-bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==3]<-4
-bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==4]<-3
-bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==5]<-2
-bazR$SF_12m_Q9d[bazR$SF_12m_Q9d==6]<-1
+raw_3m_Q11b <- bazR$SF_3m_Q11b
+bazR$SF_3m_Q11b[raw_3m_Q11b == 1] <- 5
+bazR$SF_3m_Q11b[raw_3m_Q11b == 2] <- 4
+bazR$SF_3m_Q11b[raw_3m_Q11b == 3] <- 3
+bazR$SF_3m_Q11b[raw_3m_Q11b == 4] <- 2
+bazR$SF_3m_Q11b[raw_3m_Q11b == 5] <- 1
 
 
-bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==1]<-6
-bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==2]<-5
-bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==3]<-4
-bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==4]<-5
-bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==5]<-2
-bazR$SF_12m_Q9e[bazR$SF_12m_Q9e==6]<-1
+raw_3m_Q11d <- bazR$SF_3m_Q11d
+bazR$SF_3m_Q11d[raw_3m_Q11d == 1] <- 5
+bazR$SF_3m_Q11d[raw_3m_Q11d == 2] <- 4
+bazR$SF_3m_Q11d[raw_3m_Q11d == 3] <- 3
+bazR$SF_3m_Q11d[raw_3m_Q11d == 4] <- 2
+bazR$SF_3m_Q11d[raw_3m_Q11d == 5] <- 1
 
 
-bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==1]<-6
-bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==2]<-5
-bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==3]<-4
-bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==4]<-3
-bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==5]<-2
-bazR$SF_12m_Q9h[bazR$SF_12m_Q9h==6]<-1
 
- 
-bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==1]<-5
-bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==2]<-4
-bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==3]<-3
-bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==4]<-2
-bazR$SF_12m_Q11b[bazR$SF_12m_Q11b==5]<-1
+# 12 months
 
- 
-bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==1]<-5
-bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==2]<-4
-bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==3]<-3
-bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==4]<-2
-bazR$SF_12m_Q11d[bazR$SF_12m_Q11d==5]<-1
+raw_12m_Q1 <- bazR$SF_12m_Q1
+bazR$SF_12m_Q1[raw_12m_Q1 == 1] <- 5
+bazR$SF_12m_Q1[raw_12m_Q1 == 2] <- 4
+bazR$SF_12m_Q1[raw_12m_Q1 == 3] <- 3
+bazR$SF_12m_Q1[raw_12m_Q1 == 4] <- 2
+bazR$SF_12m_Q1[raw_12m_Q1 == 5] <- 1
+
+
+raw_12m_Q2 <- bazR$SF_12m_Q2
+bazR$SF_12m_Q2[raw_12m_Q2 == 1] <- 5
+bazR$SF_12m_Q2[raw_12m_Q2 == 2] <- 4
+bazR$SF_12m_Q2[raw_12m_Q2 == 3] <- 3
+bazR$SF_12m_Q2[raw_12m_Q2 == 4] <- 2
+bazR$SF_12m_Q2[raw_12m_Q2 == 5] <- 1
+
+
+raw_12m_Q6 <- bazR$SF_12m_Q6
+bazR$SF_12m_Q6[raw_12m_Q6 == 1] <- 5
+bazR$SF_12m_Q6[raw_12m_Q6 == 2] <- 4
+bazR$SF_12m_Q6[raw_12m_Q6 == 3] <- 3
+bazR$SF_12m_Q6[raw_12m_Q6 == 4] <- 2
+bazR$SF_12m_Q6[raw_12m_Q6 == 5] <- 1
+
+
+raw_12m_Q7 <- bazR$SF_12m_Q7
+bazR$SF_12m_Q7[raw_12m_Q7 == 1] <- 6
+bazR$SF_12m_Q7[raw_12m_Q7 == 2] <- 5
+bazR$SF_12m_Q7[raw_12m_Q7 == 3] <- 4
+bazR$SF_12m_Q7[raw_12m_Q7 == 4] <- 3
+bazR$SF_12m_Q7[raw_12m_Q7 == 5] <- 2
+bazR$SF_12m_Q7[raw_12m_Q7 == 6] <- 1
+
+
+raw_12m_Q8 <- bazR$SF_12m_Q8
+bazR$SF_12m_Q8[raw_12m_Q8 == 1] <- 5
+bazR$SF_12m_Q8[raw_12m_Q8 == 2] <- 4
+bazR$SF_12m_Q8[raw_12m_Q8 == 3] <- 3
+bazR$SF_12m_Q8[raw_12m_Q8 == 4] <- 2
+bazR$SF_12m_Q8[raw_12m_Q8 == 5] <- 1
+
+
+raw_12m_Q9a <- bazR$SF_12m_Q9a
+bazR$SF_12m_Q9a[raw_12m_Q9a == 1] <- 6
+bazR$SF_12m_Q9a[raw_12m_Q9a == 2] <- 5
+bazR$SF_12m_Q9a[raw_12m_Q9a == 3] <- 4
+bazR$SF_12m_Q9a[raw_12m_Q9a == 4] <- 3
+bazR$SF_12m_Q9a[raw_12m_Q9a == 5] <- 2
+bazR$SF_12m_Q9a[raw_12m_Q9a == 6] <- 1
+
+
+raw_12m_Q9d <- bazR$SF_12m_Q9d
+bazR$SF_12m_Q9d[raw_12m_Q9d == 1] <- 6
+bazR$SF_12m_Q9d[raw_12m_Q9d == 2] <- 5
+bazR$SF_12m_Q9d[raw_12m_Q9d == 3] <- 4
+bazR$SF_12m_Q9d[raw_12m_Q9d == 4] <- 3
+bazR$SF_12m_Q9d[raw_12m_Q9d == 5] <- 2
+bazR$SF_12m_Q9d[raw_12m_Q9d == 6] <- 1
+
+
+raw_12m_Q9e <- bazR$SF_12m_Q9e
+bazR$SF_12m_Q9e[raw_12m_Q9e == 1] <- 6
+bazR$SF_12m_Q9e[raw_12m_Q9e == 2] <- 5
+bazR$SF_12m_Q9e[raw_12m_Q9e == 3] <- 4
+bazR$SF_12m_Q9e[raw_12m_Q9e == 4] <- 3
+bazR$SF_12m_Q9e[raw_12m_Q9e == 5] <- 2
+bazR$SF_12m_Q9e[raw_12m_Q9e == 6] <- 1
+
+
+raw_12m_Q9h <- bazR$SF_12m_Q9h
+bazR$SF_12m_Q9h[raw_12m_Q9h == 1] <- 6
+bazR$SF_12m_Q9h[raw_12m_Q9h == 2] <- 5
+bazR$SF_12m_Q9h[raw_12m_Q9h == 3] <- 4
+bazR$SF_12m_Q9h[raw_12m_Q9h == 4] <- 3
+bazR$SF_12m_Q9h[raw_12m_Q9h == 5] <- 2
+bazR$SF_12m_Q9h[raw_12m_Q9h == 6] <- 1
+
+
+raw_12m_Q11b <- bazR$SF_12m_Q11b
+bazR$SF_12m_Q11b[raw_12m_Q11b == 1] <- 5
+bazR$SF_12m_Q11b[raw_12m_Q11b == 2] <- 4
+bazR$SF_12m_Q11b[raw_12m_Q11b == 3] <- 3
+bazR$SF_12m_Q11b[raw_12m_Q11b == 4] <- 2
+bazR$SF_12m_Q11b[raw_12m_Q11b == 5] <- 1
+
+
+raw_12m_Q11d <- bazR$SF_12m_Q11d
+bazR$SF_12m_Q11d[raw_12m_Q11d == 1] <- 5
+bazR$SF_12m_Q11d[raw_12m_Q11d == 2] <- 4
+bazR$SF_12m_Q11d[raw_12m_Q11d == 3] <- 3
+bazR$SF_12m_Q11d[raw_12m_Q11d == 4] <- 2
+bazR$SF_12m_Q11d[raw_12m_Q11d == 5] <- 1
 ```
 
-## Calculation of dimension scores at 3 months
-### Imputation of missing data
+### 3.3. Calculation and transformation of dimension scores at 3 and 12 months
+#### 3.3.1 Imputation of missing data
+Missing item values were imputed at the dimension level when at least 50% of items were available: in this case, missing values were replaced by the mean of observed items within the same dimension. If less than 50% of items were present, the dimension score was not computed (NA).
 
 ```{r}
-items_sf36 <- list(
+# Each dimension is defined as a set of questionnaire items grouped according to SF-36 scoring guidelines
+# Group questionnaire items into their respective health dimension according to the standard SF-36 classification
+
+
+items_sf36_3m <- list(
   PF = c("SF_3m_Q3a", "SF_3m_Q3b","SF_3m_Q3c","SF_3m_Q3d", "SF_3m_Q3e", "SF_3m_Q3f","SF_3m_Q3g",
          "SF_3m_Q3h","SF_3m_Q3i","SF_3m_Q3j"),
   RP = c("SF_3m_Q4a", "SF_3m_Q4b","SF_3m_Q4c","SF_3m_Q4d"),
@@ -292,36 +325,40 @@ items_sf36 <- list(
   MH = c("SF_3m_Q9b","SF_3m_Q9c","SF_3m_Q9d","SF_3m_Q9f","SF_3m_Q9h")
 )
 
+# Function to impute missing SF-36 item values at the dimension level
+
 impute_sf36 <- function(df, items_list) {
-  df_out <- df
+  df_out <- df # copy the dataset to not modify directly the original data
   
   for (dim in names(items_list)) {
     vars <- items_list[[dim]]
     
-    # nombre d'items présents par patient
+# Count number of non-missing items per participant for each dimension
     present <- rowSums(!is.na(df[vars]))
     
-    # règle SF-36 : au moins 50% des items présents
+# SF-36 rule: at least 50% of items must be available to compute the dimension score
     enough <- present >= length(vars) / 2
     
-    # moyenne des items présents
+# Compute row-wise mean of available items for imputation
     row_means <- rowMeans(df[vars], na.rm = TRUE)
     
-    # imputation des NA si règle respectée
+# Impute missing values using dimension mean when rule is satisfied
     for (v in vars) {
       df_out[[v]][is.na(df[[v]]) & enough] <- row_means[is.na(df[[v]]) & enough]
     }
     
-    # si < 50% → toute la dimension devient NA
+# If insufficient data, set entire dimension to NA
     df_out[!enough, vars] <- NA
   }
   
   return(df_out)
 }
-bazR <- impute_sf36(bazR, items_sf36)
+
+# Apply imputation function to dataset
+bazR <- impute_sf36(bazR, items_sf36_3m)
 ```
 
-### Calculation and transformation of dimension scores at 3 months
+#### 3.3.2. Calculation and transformation of dimension scores at 3 months
 Raw scores for each dimension were first computed by summing the values of all items belonging to that dimension.
 Scores were then linearly transformed to a 0–100 scale using the following formula:
 
@@ -330,14 +367,16 @@ Transformed score = ((Observed score - Minimum possible score) / (Maximum possib
 In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.
 
 ```{r}
-# Dimension PF
+# Compute dimension PF
 aPF_3m <- (bazR$SF_3m_Q3a + bazR$SF_3m_Q3b + bazR$SF_3m_Q3c + bazR$SF_3m_Q3d + bazR$SF_3m_Q3e + bazR$SF_3m_Q3f
             + bazR$SF_3m_Q3g + bazR$SF_3m_Q3h + bazR$SF_3m_Q3i + bazR$SF_3m_Q3j)
 
+# Transform dimension PF to a 0-100 scale
 bazR$PFtransformed_3m <- ((aPF_3m-10)/20)*100 
 
 
-# Dimension RP  
+# Do the same for all others dimensions 
+# Dimension RP
 aRP_3m <- (bazR$SF_3m_Q4a + bazR$SF_3m_Q4b + bazR$SF_3m_Q4c + bazR$SF_3m_Q4d)
 
 bazR$RPtransformed_3m<-((aRP_3m-4)/4)*100
@@ -380,12 +419,12 @@ bazR$HTtransformed_3m <- ((aHT_3m-1)/4)*100
 ```
 
 
-## Calculation of dimension scores at 12 months
-### Imputation of missing data
+#### 3.3.3. Imputation of missing data at 12 months
+Missing item values were imputed using the same method and function as for 3 months, with the same rule of at least 50% of items available to compute the dimension score.
 
 ```{r}
 
-items_sf36 <- list(
+items_sf36_12m <- list(
   PF = c("SF_12m_Q3a", "SF_12m_Q3b","SF_12m_Q3c","SF_12m_Q3d", "SF_12m_Q3e", "SF_12m_Q3f",
          "SF_12m_Q3g", "SF_12m_Q3h","SF_12m_Q3i","SF_12m_Q3j"),
   RP = c("SF_12m_Q4a", "SF_12m_Q4b", "SF_12m_Q4c","SF_12m_Q4d"),
@@ -397,44 +436,13 @@ items_sf36 <- list(
   MH = c("SF_12m_Q9b","SF_12m_Q9c","SF_12m_Q9d","SF_12m_Q9f","SF_12m_Q9h")
 )
 
-impute_sf36 <- function(df, items_list) {
-  df_out <- df
-  
-  for (dim in names(items_list)) {
-    vars <- items_list[[dim]]
-    
-    # nombre d'items présents par patient
-    present <- rowSums(!is.na(df[vars]))
-    
-    # règle SF-36 : au moins 50% des items présents
-    enough <- present >= length(vars) / 2
-    
-    # moyenne des items présents
-    row_means <- rowMeans(df[vars], na.rm = TRUE)
-    
-    # imputation des NA si règle respectée
-    for (v in vars) {
-      df_out[[v]][is.na(df[[v]]) & enough] <- row_means[is.na(df[[v]]) & enough]
-    }
-    
-    # si < 50% → toute la dimension devient NA
-    df_out[!enough, vars] <- NA
-  }
-  
-  return(df_out)
-  
-}
-bazR <- impute_sf36(bazR, items_sf36)
+
+bazR <- impute_sf36(bazR, items_sf36_12m)
 
 ```
 
-### Calculation and transformation of dimension scores at 3 months
-Raw scores for each dimension were first computed by summing the values of all items belonging to that dimension.
-Scores were then linearly transformed to a 0–100 scale using the following formula:
-
-Transformed score = ((Observed score - Minimum possible score) / (Maximum possible score - Minimum possible score)) × 100
-
-In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.
+#### 3.3.4. Calculation and transformation of dimension scores at 3 months
+Scores for each dimension were computed using the same method as for 3 months, by summing the values of all items belonging to that dimension and then linearly transforming them to a 0–100 scale using the same formula as for 3 months.
 
 ```{r}
 # Dimension PF
@@ -485,100 +493,105 @@ bazR$HTtransformed_12m <- ((aHT_12m-1)/4)*100
 
 ```
 
-## Statistical comparison of dimension scores at 3 and 12 months and construction of a radar plot
+### 3.4. Visualization of the evolution of dimension scores between 3 and 12 months with a radar plot
 
 ```{r}
+# Compare SF-36 scores between 3 and 12 months and store values for the construction of radar plot. And perform Wilcoxon test to assess if changes over time are statistically significant, with a significance threshold of p<0.05.
 
+# Dimension PF
 summary(bazR$PFtransformed_3m)
 summary(bazR$PFtransformed_12m)
-radarPF=c(100,0,57.94,61.19) #max 100, min 0, PF3mois=58.19, PF1an=62.27
+radarPF=c(100,0,54.67,59.29) #max 100, min 0, mean 3m, mean 12m
 wilcox.test(bazR$PFtransformed_3m,bazR$PFtransformed_12m)
 
-
+# Dimension RP
 summary(bazR$RPtransformed_3m)
 summary(bazR$RPtransformed_12m)
-radarRP=c(100,0,31.6,47.03)
+radarRP=c(100,0,35.19,54.63)
 wilcox.test(bazR$RPtransformed_3m,bazR$RPtransformed_12m)
 
-
+# Dimension BP
 summary(bazR$BPtransformed_3m)
 summary(bazR$BPtransformed_12m)
-radarBP=c(100,0,46.64,48.16)
+radarBP=c(100,0,36.33,51.67)
 wilcox.test(bazR$BPtransformed_3m,bazR$BPtransformed_12m)
 
-
+# Dimension GH
 summary(bazR$GHtransformed_3m)
 summary(bazR$GHtransformed_12m)
-radarHG=c(100,0,50.42,52.3)
+radarHG=c(100,0,40.7,58.83)
 wilcox.test(bazR$GHtransformed_3m,bazR$GHtransformed_12m)
 
-
+# Dimension VT
 summary(bazR$VTtransformed_3m)
 summary(bazR$VTtransformed_12m)
-radarVT=c(100,0,47.53,51.22)
+radarVT=c(100,0,42.22,50.50)
 wilcox.test(bazR$VTtransformed_3m,bazR$VTtransformed_12m)
 
-
+# Dimension SF
 summary(bazR$SFtransformed_3m)
 summary(bazR$SFtransformed_12m)
-radarSF=c(100,0,61.01,67.09)
+radarSF=c(100,0,51.67,67.92)
 wilcox.test(bazR$SFtransformed_3m,bazR$SFtransformed_12m)
 
-
+# Dimension RE
 summary(bazR$REtransformed_3m)
 summary(bazR$REtransformed_12m)
-radarRE=c(100,0,46.19,56.06)
+radarRE=c(100,0,51.28,62.96)
 wilcox.test(bazR$REtransformed_3m,bazR$REtransformed_12m)
 
-
+# Dimension MH
 summary(bazR$MHtransformed_3m)
 summary(bazR$MHtransformed_12m)
-radarMH=c(100,0,61.35,62.45)
+radarMH=c(100,0,58.80,61.47)
 wilcox.test(bazR$MHtransformed_3m,bazR$MHtransformed_12m)
 
-png("./results/radar_plot.png",width = 1800,height = 1800,res = 300)
 
+
+# Create a matrix for the radar plot with the computed scores for each dimension at 3 and 12 months, along with the maximum and minimum values (0-100)
 data<-cbind(radarPF,radarRP,radarBP,radarHG,radarVT,radarSF,radarRE,radarMH) #fait tableau avec ensemble dimensions
 
-labels = c("PF \n p=0.06","RP\n p<0.0001","BP\n p=0.25","HG\n p=0.18",
-           "VT\n p=0.01","SF\n  p=0.0004","RE\n p=0.0008","MH\n p=0.33")
+# Define labels for each dimension that include the p-values from the Wilcoxon tests
 
-colnames(data)<-labels #remplace nom des colonnes par valeurs dans data
+labels = c("PF \n p=0.5","RP\n p=0.1","BP\n p=0.2","GH\n p<0.0001",
+           "VT\n p=0.01","SF\n  p=0.01","RE\n p=0.3","MH\n p=0.8")
 
-# Les données sont mises en forme sous forme de tableau dont les colonnes sont nommées
+# Rename columns of the matrix with the defined labels
+colnames(data)<-labels
 
+# Convert the matrix to a data frame for use with the radar chart function
+datx = as.data.frame(data)
 
-datx = as.data.frame(data) ; datx
+coul <- c("red", "blue") # Define colors for the radar chart: red for 3 months and blue for 12 months
 
-coul <- c("red", "blue") #creer un vecteur de 3 couleurs
+# Save radar plot as a PNG file
+png("./results/radar_plot.png",width = 2400,height = 1800,res = 300)
 
-radarchart(datx, 
-           axistype = 2, 
-           seg = 5, #radachart sur data frame datx, axistype= style des axes, seg=nb de graduation
-           vlcex = 0.7,
-           pcol = coul,#couleurs contour des polygones
-           plwd=2 , 
-           plty=1, #épaisseur lignes, et lignes pleines (plty=1) 
-           cglcol="gray71", 
-           cglty=1,
-           axislabcol="grey",      #couleur et style grille
+# Create the radar chart using the fmsb package, with specified parameters for axis type, segments, colors, line width and type, grid color and type, and axis label color
+radarchart(datx,
+           axistype = 2, # graduation of axes
+           seg = 5, # number of segments in the radar chart
+           vlcex = 0.7, # size of labels for each dimension
+           pcol = coul,# colors for the lines representing 3 and 12 months
+           plty=1, # style of lines
+           cglcol="gray71", # color of the grid lines
+           cglty=1, # style of grid lines
+           axislabcol="grey", # color of axis labels
 
 )
 
 
-legend(1.6,0.8,#position légende
+legend(1.2,0.8,# position of the legend on the plot
        legend=c("3 month","12 month"), 
-       pch=c(16,16), #symboles points pleins
-       col=c("red","blue"), #couleurs associées aux légendes
-       lty=c(1,1), #ligne pleine
-       text.font=1, #texte en gras
-       box.lty=0 #pas de cadre autour figure
+       pch=c(16,16), # symbols
+       col=c("red","blue"), # colors for the symbols
+       lty=c(1,1), # line types
 )
 dev.off()
 ```
 
+## Export the data in the results folder
 
-## Export data
 ```{r}
 write.csv(bazR, "results/bazP_scores.csv", row.names = FALSE)
 ```
