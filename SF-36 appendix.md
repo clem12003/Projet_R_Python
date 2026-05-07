@@ -26,7 +26,7 @@ $$
 Here are the minimum and maximal posible scores for each dimension.
 
 |          Dimension        |     Minimum posible score    |     Maximum posible score |
-|:-------------------------:|:-------------------:|
+|:-------------------------:|:-------------------:|:-------------------:|
 | Physical Functioning (PF) |     10    |  30  |
 | Role Physical (RP)        |     4     |  8   |
 | Bodily Pain (BP)          |     2     |  12  |
