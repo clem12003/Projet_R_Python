@@ -68,6 +68,17 @@ $$
 
 ### French general population norms for each dimension (INSEE 2002-2003):
 
+|          Dimension        |     French norms    |
+|:-------------------------:|:-------------------:|
+| Physical Functioning (PF) |     85.3 ± 22.3     |
+| Role Physical (RP)        | 82.2 ± 32.2         |
+| Bodily Pain (BP)          | 73.0 ± 24.6         |
+| General Health (GH)       | 67.8 ± 18.9         |
+| Vitality (VT)             | 57.4 ± 18.0         |
+| Social Functioning (SF)   | 80.9 ± 21.2         |
+| Role Emotional (RE)       | 82.0 ± 32.9         |
+| Mental Health (MH)        | 66.7 ± 17.7         |
+
 Physical Functioning (PF): 85.3 ± 22.3  
 Role Physical (RP): 82.2 ± 32.2  
 Bodily Pain (BP): 73.0 ± 24.6  
