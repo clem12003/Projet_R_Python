@@ -81,14 +81,14 @@ Mental Health (MH): 66.7 ± 17.7
 
 The Physical and Mental Component Summary scores were calculated using a weighted linear combination of standardized SF-36 domain scores. The coefficients correspond to empirically derived weights from the SF-36 scoring system, reflecting the contribution of each domain to overall health status, with scores standardized to a mean of 50 and SD of 10.  
 
-\[
-\text{PCS} = \left[(PF_z \times 0.42402) + (RP_z \times 0.31754) + (BP_z \times 0.31754) + (GH_z \times 0.24954) + (VT_z \times 0.02877) + (SF_z \times -0.00753) + (RE_z \times -0.19206) + (MH_z \times -0.2069)\right] \times 10 + 50
-\]
+$$
+\text{PCS} = \left[
+(PF_z \times 0.42402) + (RP_z \times 0.31754) + (BP_z \times 0.31754) + (GH_z \times 0.24954) + (VT_z \times 0.02877) + (SF_z \times -0.00753) + (RE_z \times -0.19206) + (MH_z \times -0.2069) \right] \times 10 + 50
+$$
 
 
-\[
+$$
 \text{MCS} = \left[
-(PF_z \times -0.22999) + (RP_z \times -0.12329) + (BP_z \times -0.09731) + (GH_z \times -0.01571) + (VT_z \times 0.23534) + (SF_z \times 0.26876) + (RE_z \times 0.43407) + (MH_z \times 0.48581)
-\right] \times 10 + 50
-\]
+(PF_z \times -0.22999) + (RP_z \times -0.12329) + (BP_z \times -0.09731) + (GH_z \times -0.01571) + (VT_z \times 0.23534) + (SF_z \times 0.26876) + (RE_z \times 0.43407) + (MH_z \times 0.48581)\right] \times 10 + 50
+$$
 
