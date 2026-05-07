@@ -13,9 +13,9 @@ output:
 # 1. Scientific problem 
 ## 1.1. Context
 
-Advances in intensive care medicine have significantly reduced ICU mortality over recent decades, leading to a growing population of ICU survivors with persistent physical, psychological, and cognitive impairments after discharge (1, 16). These long-term consequences, commonly grouped under the term Post-Intensive Care Syndrome (PICS), may substantially alter patients’ health-related quality of life (HRQoL) (13).
+Advances in intensive care medicine have significantly reduced ICU mortality over recent decades, leading to a growing population of ICU survivors with persistent impairments after discharge (1, 2). These long-term consequences, commonly grouped under the term Post-Intensive Care Syndrome (PICS), may substantially alter patients’ health-related quality of life (HRQoL) (3).
 
-According to the World Health Organization (WHO), quality of life refers to an individual’s perception of their position in life within the cultural and social context in which they live (8). In the medical field, HRQoL is considered a multidimensional concept reflecting the influence of health status and healthcare on physical, psychological, and social dimensions of health (9). Previous studies have shown that ICU survivors often report lower HRQoL scores than the general population, with only partial recovery over time (18, 19).
+According to the World Health Organization (WHO), quality of life refers to an individual’s perception of their position in life within the cultural and social context in which they live (4). In the medical field, HRQoL is considered a multidimensional concept reflecting the influence of health status and healthcare on physical, psychological, and social dimensions of health (5). Previous studies have shown that ICU survivors often report lower HRQoL scores than the general population, with only partial recovery over time (6, 7).
 
 This project aims to describe the evolution of HRQoL at 3 and 12 months after ICU discharge using the SF-36 questionnaire.
 
@@ -27,7 +27,7 @@ The aim of this study is to evaluate the quality of life of ICU survivors at 3 a
 
 All ICU survivors were contacted by mail 3 and 12 month after hospital discharge and were asked to complete the SF-36 questionnaire.
 
-### Outcome measure
+### Outcome measure (8, 9)
 
 Quality of life was assesed using the SF-36 questionnaire. This questionnaire evaluate multiple dimensions of quality of life including : Physical Functionning (PF), Role Physical (RP), Bodily Pain (BP), General Health (GH), Vitality (VT), Social Functioning (SF), Role Emotional (RE), Mental Health (MH). 
 Then, this dimensions are grouped into two components, the Physical Component Summary (PCS), including PF, RP, BP and GH, and the Mental Component Summary (MCS), including VT, SF, RE and MH.
@@ -79,17 +79,34 @@ In this transformed scale, 0 represents the worst possible health status and 100
 **Input**: `bazRSF.csv` in `data` folder  
 **Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement or not  
 
+---
+
+## 3. Code
+
+### 3.1 Setup
+
+These lines load the necessary libraries for data manipulation and visualization.
+```{r}
+# If you don't have the packages installed, you can install them using the following commands:
+
+# install.packages("fmsb")
+# install.packages("scales")
+
+# Then, load the libraries:
+
+library(fmsb)
+library(scales)
+```
 
 
-
-##  Import the data
 
 ```{r}
+# Load the data
 bazR <- read.csv("data/bazRSF.csv", header = TRUE, sep = ";")
 
 ```
 
-
+### 3.2. Recoding of SF-36 item scores
 
 ```{r}
 # Recode items for 3 months
@@ -529,9 +546,7 @@ labels = c("PF \n p=0.06","RP\n p<0.0001","BP\n p=0.25","HG\n p=0.18",
 colnames(data)<-labels #remplace nom des colonnes par valeurs dans data
 
 # Les données sont mises en forme sous forme de tableau dont les colonnes sont nommées
-#requiert package fmsb et scales
-library(fmsb)
-library(scales)
+
 
 datx = as.data.frame(data) ; datx
 
