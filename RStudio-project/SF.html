@@ -1714,58 +1714,261 @@ display: none;
 </div>
 
 
-<div id="import-the-data" class="section level2" number="1">
-<h2><span class="header-section-number">1</span> Import the data</h2>
-<pre class="r"><code>bazR &lt;- read.csv(&quot;data/bazRSF_reseau.csv&quot;, header = TRUE, sep = &quot;;&quot;)</code></pre>
+<div id="impaired-quality-of-life-after-intensive-care" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Impaired quality of
+life after intensive care</h1>
 </div>
-<div id="calculation-of-dimension-scores-at-3-months" class="section level2" number="2">
-<h2><span class="header-section-number">2</span> Calculation of
-dimension scores at 3 months</h2>
-<div id="imputation-of-missing-data" class="section level3" number="2.1">
-<h3><span class="header-section-number">2.1</span> Imputation of missing
-data</h3>
-<pre class="r"><code>items_sf36 &lt;- list(
-  PF = c(&quot;SF_3mQ3a&quot;, &quot;SF_3mQ3b&quot;,&quot;SF_3mQ3c&quot;,&quot;SF_3mQ3d&quot;, &quot;SF_3mQ3e&quot;, &quot;SF_3mQ3f&quot;,&quot;SF_3mQ3g&quot;, &quot;SF_3mQ3h&quot;,&quot;SF_3mQ3i&quot;,&quot;SF_3mQ3j&quot;),
-  RP = c(&quot;SF_3mQ4a&quot;, &quot;SF_3mQ4b&quot;,&quot;SF_3mQ4c&quot;,&quot;SF_3mQ4d&quot;),
-  BP = c(&quot;SF_3mQ7&quot;,&quot;SF_3mQ8&quot;),
-  GH = c(&quot;SF_3mQ1&quot;,&quot;SF_3mQ11a&quot;,&quot;SF_3mQ11b&quot;, &quot;SF_3mQ11c&quot;,&quot;SF_3mQ11d&quot;),
-  VT = c(&quot;SF_3mQ9a&quot;, &quot;SF_3mQ9e&quot;,&quot;SF_3mQ9g&quot;,&quot;SF_3mQ9i&quot;),
-  SF = c(&quot;SF_3mQ6&quot;, &quot;SF_3mQ10&quot;),
-  RE = c(&quot;SF_3mQ5a&quot;,&quot;SF_3mQ5b&quot;,&quot;SF_3mQ5c&quot;),
-  MH = c(&quot;SF_3mQ9b&quot;,&quot;SF_3mQ9c&quot;,&quot;SF_3mQ9d&quot;,&quot;SF_3mQ9f&quot;,&quot;SF_3mQ9h&quot;)
+<div id="scientific-problem" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 1. Scientific
+problem</h1>
+<div id="context" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 1.1. Context</h2>
+<p>Advances in intensive care medicine have significantly reduced ICU
+mortality over recent decades, leading to a growing population of ICU
+survivors with persistent impairments after discharge (1, 2). These
+long-term consequences, commonly grouped under the term Post-Intensive
+Care Syndrome (PICS), may substantially alter patients’ health-related
+quality of life (HRQoL) (3).</p>
+<p>According to the World Health Organization (WHO), quality of life
+refers to an individual’s perception of their position in life within
+the cultural and social context in which they live (4). In the medical
+field, HRQoL is considered a multidimensional concept reflecting the
+influence of health status and healthcare on physical, psychological,
+and social dimensions of health (5). Previous studies have shown that
+ICU survivors often report lower HRQoL scores than the general
+population, with only partial recovery over time (6, 7).</p>
+<p>This project aims to describe the evolution of HRQoL at 3 and 12
+months after ICU discharge using the SF-36 questionnaire.</p>
+</div>
+<div id="aim" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> 1.2. Aim</h2>
+<p>The aim of this study is to evaluate the quality of life of ICU
+survivors at 3 and 12 months after discharge, using the SF-36
+questionnaire. Specifically, it seeks to assess changes over time in the
+different dimensions of quality of life, including physical and mental
+components, in order to better understand recovery trajectories
+following critical illness.</p>
+</div>
+<div id="method" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> 1.3. Method</h2>
+<p>All ICU survivors were contacted by mail 3 and 12 month after
+hospital discharge and were asked to complete the SF-36
+questionnaire.</p>
+<div id="outcome-measure-8-9" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Outcome measure (8,
+9)</h3>
+<p>Quality of life was assesed using the SF-36 questionnaire. This
+questionnaire evaluate multiple dimensions of quality of life including
+: Physical Functionning (PF), Role Physical (RP), Bodily Pain (BP),
+General Health (GH), Vitality (VT), Social Functioning (SF), Role
+Emotional (RE), Mental Health (MH). Then, this dimensions are grouped
+into two components, the Physical Component Summary (PCS), including PF,
+RP, BP and GH, and the Mental Component Summary (MCS), including VT, SF,
+RE and MH.</p>
+<p>SF-36 domains were scored according to standard procedures. Scores of
+each dimension were first computed by summing the values of all items
+belonging to that dimension and were then linearly transformed to a
+0–100 scale. Higher scores indicate better heath status.</p>
+<p>The Physical Component Summary (PCS) and Mental Component Summary
+(MCS) were then calculated using the dimensions scores. Then they were
+standardized unsing French reference population norms, with a mean of 50
+and a standard deviation of 10.</p>
+<p>Detailed information on SF-36 scoring procedures, including item
+mapping, score transformation, and computation of PCS and MCS, is
+provided in the <code>SF-36 appendix.md</code>.</p>
+</div>
+<div id="participants" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Participants</h3>
+<p>479 patients who survived ICU and responded to the SF-36 at both 3
+and 12 months were included in the study.</p>
+</div>
+</div>
+</div>
+<div id="rstudio-project" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> 2. RStudio project</h1>
+<div id="aim-1" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 2.1. Aim</h2>
+<p>The aim of this project is to assess SF-36 dimension scores at 3 and
+12 months after ICU discharge. In addition, a radar chart will be
+generated to visualize changes in quality of life dimensions over
+time.</p>
+</div>
+<div id="data-organization" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 2.2. Data
+organization</h2>
+<p>File: <code>bazRSF.csv</code><br />
+Colums:<br />
+<code>ID</code>: Patient ID, corresponding to their number of
+inclusion<br />
+<code>SF_3m_Q[y]</code>: SF-36 score at 3 months for question y (where y
+is the question number e.g. 1, 2, 3a, …)<br />
+<code>SF_12m_Q[y]</code>: SF-36 score at 12 months for question y (where
+y is the question number e.g. 1, 2, 3a, …)</p>
+</div>
+<div id="script-organization" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> 2.3. Script
+organization</h2>
+<div id="recoding-of-sf-36-item-scores" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> 2.3.1. Recoding of
+SF-36 item scores</h3>
+<p><strong>Aim</strong>: To recode the SF-36 item responses so that
+higher scores correspond to a better health status accross all
+items.<br />
+<strong>Input</strong>: <code>bazRSF.csv</code> in <code>data</code>
+folder<br />
+<strong>Output</strong>: A set of SF-36 item scores in which higher
+values indicate better perceived health status.</p>
+</div>
+<div id="calculation-and-transformation-of-dimension-scores-at-3-and-12-months" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> 2.3.2. Calculation
+and transformation of dimension scores at 3 and 12 months</h3>
+<p><strong>Aim</strong>: To compute dimension scores and transform them
+onto a 0-100 scale for comparability and interpretation<br />
+<strong>Input</strong>: <code>bazRSF.csv</code> in <code>data</code>
+folder<br />
+<strong>Calculation</strong>:<br />
+Raw scores for each dimension are first computed by summing the values
+of all items belonging to that dimension.<br />
+Scores are then linearly transformed to a 0–100 scale using the
+following formula:</p>
+<p><span class="math display">\[
+\text{Transformed score} = \frac{\text{Observed score} - \text{Minimum
+possible score}}{\text{Maximum possible score} - \text{Minimum possible
+score}} \times 100
+\]</span></p>
+<p>In this transformed scale, 0 represents the worst possible health
+status and 100 represents the best possible health status.<br />
+<strong>Output</strong>: A standardized score for each dimension,
+ranging between 0 and 100</p>
+</div>
+<div id="visualization-of-the-evolution-of-dimension-scores-between-3-and-12-months-with-a-radar-plot" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> 2.3.3.
+Visualization of the evolution of dimension scores between 3 and 12
+months with a radar plot</h3>
+<p><strong>Aim</strong>: To visually compare dimension scores between 3
+and 12 months, and assess if changes over time is statistically
+significant, using a radar plot<br />
+<strong>Input</strong>: <code>bazRSF.csv</code> in <code>data</code>
+folder<br />
+<strong>Output</strong>: A radar plot comparing dimension scores at 3
+and 12 months with p-values indicating whether changes over time reflect
+a significant improvement or not</p>
+<hr />
+</div>
+</div>
+<div id="code" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> 3. Code</h2>
+<div id="setup" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> 3.1 Setup</h3>
+<p>These lines load the necessary libraries for data manipulation and
+visualization.</p>
+<pre class="r"><code># If you don&#39;t have the packages installed, you can install them using the following commands:
+
+# install.packages(&quot;fmsb&quot;)
+# install.packages(&quot;scales&quot;)
+
+# Then, load the libraries:
+
+library(fmsb)</code></pre>
+<pre><code>## Warning: le package &#39;fmsb&#39; a été compilé avec la version R 4.5.3</code></pre>
+<pre class="r"><code>library(scales)</code></pre>
+<pre class="r"><code># Load the data
+bazR &lt;- read.csv(&quot;data/bazRSF.csv&quot;, header = TRUE, sep = &quot;;&quot;)</code></pre>
+</div>
+<div id="recoding-of-sf-36-item-scores-1" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> 3.2. Recoding of
+SF-36 item scores</h3>
+<p>Item responses are recoded so that higher values reflect better
+health status across all SF-36 dimensions, ensuring comparability
+between items and correct interpretation of scores. The items that need
+to be recoded are Q1, Q2, Q6, Q7, Q8, Q9a, Q9d, Q9e, Q9h, Q11b and Q11d
+at both 3 and 12 months.</p>
+<pre class="r"><code># 3 months
+# Items requiring reverse coding are recoded using a linear transformation (new score = max + 1 - original score) in order to ensure that higher scores reflect better health status.
+
+## Define functions to reverse code items with 5-point and 6-point scales
+reverse6 &lt;- function(x) 6 - x
+reverse7 &lt;- function(x) 7 - x
+
+## Items with 5-point scale (Q1, Q2, Q6, Q11b, Q11d)
+
+items_6 &lt;- c(&quot;SF_3m_Q1&quot;,&quot;SF_3m_Q2&quot;,&quot;SF_3m_Q6&quot;,&quot;SF_3m_Q8&quot;,
+             &quot;SF_3m_Q11b&quot;,&quot;SF_3m_Q11d&quot;,
+             &quot;SF_12m_Q1&quot;,&quot;SF_12m_Q2&quot;,&quot;SF_12m_Q6&quot;,
+             &quot;SF_12m_Q8&quot;,&quot;SF_12m_Q11b&quot;,&quot;SF_12m_Q11d&quot;)
+
+## Items with 6-point scale (Q7, Q9a, Q9d, Q9e, Q9h)
+
+items_7 &lt;- c(&quot;SF_3m_Q7&quot;,&quot;SF_3m_Q9a&quot;,&quot;SF_3m_Q9d&quot;,&quot;SF_3m_Q9e&quot;,&quot;SF_3m_Q9h&quot;,
+             &quot;SF_12m_Q7&quot;,&quot;SF_12m_Q9a&quot;,&quot;SF_12m_Q9d&quot;,&quot;SF_12m_Q9e&quot;,&quot;SF_12m_Q9h&quot;)
+
+## Apply reverse coding to the specified items
+
+bazR[items_6] &lt;- lapply(bazR[items_6], reverse6)
+bazR[items_7] &lt;- lapply(bazR[items_7], reverse7)</code></pre>
+</div>
+<div id="calculation-and-transformation-of-dimension-scores-at-3-and-12-months-1" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> 3.3. Calculation
+and transformation of dimension scores at 3 and 12 months</h3>
+<div id="imputation-of-missing-data" class="section level4" number="3.4.3.1">
+<h4><span class="header-section-number">3.4.3.1</span> 3.3.1 Imputation
+of missing data</h4>
+<p>Missing item values were imputed at the dimension level when at least
+50% of items were available: in this case, missing values were replaced
+by the mean of observed items within the same dimension. If less than
+50% of items were present, the dimension score was not computed
+(NA).</p>
+<pre class="r"><code># Each dimension is defined as a set of questionnaire items grouped according to SF-36 scoring guidelines
+# Group questionnaire items into their respective health dimension according to the standard SF-36 classification
+
+
+items_sf36_3m &lt;- list(
+  PF = c(&quot;SF_3m_Q3a&quot;, &quot;SF_3m_Q3b&quot;,&quot;SF_3m_Q3c&quot;,&quot;SF_3m_Q3d&quot;, &quot;SF_3m_Q3e&quot;, &quot;SF_3m_Q3f&quot;,&quot;SF_3m_Q3g&quot;,
+         &quot;SF_3m_Q3h&quot;,&quot;SF_3m_Q3i&quot;,&quot;SF_3m_Q3j&quot;),
+  RP = c(&quot;SF_3m_Q4a&quot;, &quot;SF_3m_Q4b&quot;,&quot;SF_3m_Q4c&quot;,&quot;SF_3m_Q4d&quot;),
+  BP = c(&quot;SF_3m_Q7&quot;,&quot;SF_3m_Q8&quot;),
+  GH = c(&quot;SF_3m_Q1&quot;,&quot;SF_3m_Q11a&quot;,&quot;SF_3m_Q11b&quot;, &quot;SF_3m_Q11c&quot;,&quot;SF_3m_Q11d&quot;),
+  VT = c(&quot;SF_3m_Q9a&quot;, &quot;SF_3m_Q9e&quot;,&quot;SF_3m_Q9g&quot;,&quot;SF_3m_Q9i&quot;),
+  SF = c(&quot;SF_3m_Q6&quot;, &quot;SF_3m_Q10&quot;),
+  RE = c(&quot;SF_3m_Q5a&quot;,&quot;SF_3m_Q5b&quot;,&quot;SF_3m_Q5c&quot;),
+  MH = c(&quot;SF_3m_Q9b&quot;,&quot;SF_3m_Q9c&quot;,&quot;SF_3m_Q9d&quot;,&quot;SF_3m_Q9f&quot;,&quot;SF_3m_Q9h&quot;)
 )
 
+# Function to impute missing SF-36 item values at the dimension level
+
 impute_sf36 &lt;- function(df, items_list) {
-  df_out &lt;- df
+  df_out &lt;- df # copy the dataset to not modify directly the original data
   
   for (dim in names(items_list)) {
     vars &lt;- items_list[[dim]]
     
-    # nombre d&#39;items présents par patient
+# Count number of non-missing items per participant for each dimension
     present &lt;- rowSums(!is.na(df[vars]))
     
-    # règle SF-36 : au moins 50% des items présents
+# SF-36 rule: at least 50% of items must be available to compute the dimension score
     enough &lt;- present &gt;= length(vars) / 2
     
-    # moyenne des items présents
+# Compute row-wise mean of available items for imputation
     row_means &lt;- rowMeans(df[vars], na.rm = TRUE)
     
-    # imputation des NA si règle respectée
+# Impute missing values using dimension mean when rule is satisfied
     for (v in vars) {
       df_out[[v]][is.na(df[[v]]) &amp; enough] &lt;- row_means[is.na(df[[v]]) &amp; enough]
     }
     
-    # si &lt; 50% → toute la dimension devient NA
+# If insufficient data, set entire dimension to NA
     df_out[!enough, vars] &lt;- NA
   }
   
   return(df_out)
 }
-bazR &lt;- impute_sf36(bazR, items_sf36)</code></pre>
+
+# Apply imputation function to dataset
+bazR &lt;- impute_sf36(bazR, items_sf36_3m)</code></pre>
 </div>
-<div id="calculation-and-transformation-of-dimension-scores-at-3-months" class="section level3" number="2.2">
-<h3><span class="header-section-number">2.2</span> Calculation and
-transformation of dimension scores at 3 months</h3>
+<div id="calculation-and-transformation-of-dimension-scores-at-3-months" class="section level4" number="3.4.3.2">
+<h4><span class="header-section-number">3.4.3.2</span> 3.3.2.
+Calculation and transformation of dimension scores at 3 months</h4>
 <p>Raw scores for each dimension were first computed by summing the
 values of all items belonging to that dimension. Scores were then
 linearly transformed to a 0–100 scale using the following formula:</p>
@@ -1773,326 +1976,321 @@ linearly transformed to a 0–100 scale using the following formula:</p>
 (Maximum possible score - Minimum possible score)) × 100</p>
 <p>In this transformed scale, 0 represents the worst possible health
 status and 100 represents the best possible health status.</p>
-<pre class="r"><code># Dimension PF
-aPF_3m &lt;- (bazR$SF_3mQ3a + bazR$SF_3mQ3b + bazR$SF_3mQ3c + bazR$SF_3mQ3d + bazR$SF_3mQ3e + bazR$SF_3mQ3f
-            + bazR$SF_3mQ3g + bazR$SF_3mQ3h + bazR$SF_3mQ3i + bazR$SF_3mQ3j)
+<pre class="r"><code># Compute dimension PF
+aPF_3m &lt;- (bazR$SF_3m_Q3a + bazR$SF_3m_Q3b + bazR$SF_3m_Q3c + bazR$SF_3m_Q3d + bazR$SF_3m_Q3e + bazR$SF_3m_Q3f
+            + bazR$SF_3m_Q3g + bazR$SF_3m_Q3h + bazR$SF_3m_Q3i + bazR$SF_3m_Q3j)
 
+# Transform dimension PF to a 0-100 scale
 bazR$PFtransformed_3m &lt;- ((aPF_3m-10)/20)*100 
 
 
-# Dimension RP  
-aRP_3m &lt;- (bazR$SF_3mQ4a + bazR$SF_3mQ4b + bazR$SF_3mQ4c + bazR$SF_3mQ4d)
+# Do the same for all others dimensions 
+# Dimension RP
+aRP_3m &lt;- (bazR$SF_3m_Q4a + bazR$SF_3m_Q4b + bazR$SF_3m_Q4c + bazR$SF_3m_Q4d)
 
 bazR$RPtransformed_3m&lt;-((aRP_3m-4)/4)*100
 
 # Dimension BP
-aBP_3m &lt;- (bazR$SF_3mQ7 + bazR$SF_3mQ8)
+aBP_3m &lt;- (bazR$SF_3m_Q7 + bazR$SF_3m_Q8)
 
 bazR$BPtransformed_3m &lt;- ((aBP_3m-2)/10)*100
 
 # Dimension GH
-aGH_3m &lt;- (bazR$SF_3mQ1 + bazR$SF_3mQ11a + bazR$SF_3mQ11b + bazR$SF_3mQ11c + bazR$SF_3mQ11d)
+aGH_3m &lt;- (bazR$SF_3m_Q1 + bazR$SF_3m_Q11a + bazR$SF_3m_Q11b + bazR$SF_3m_Q11c + bazR$SF_3m_Q11d)
 
 bazR$GHtransformed_3m &lt;- ((aGH_3m-5)/20)*100
 
 # Dimension VT
-aVT_3m &lt;- (bazR$SF_3mQ9a + bazR$SF_3mQ9e + bazR$SF_3mQ9g + bazR$SF_3mQ9i)
+aVT_3m &lt;- (bazR$SF_3m_Q9a + bazR$SF_3m_Q9e + bazR$SF_3m_Q9g + bazR$SF_3m_Q9i)
 
 bazR$VTtransformed_3m &lt;- ((aVT_3m-4)/20)*100
 
 # Dimension SF
-aSF_3m &lt;- (bazR$SF_3mQ6 + bazR$SF_3mQ10)
+aSF_3m &lt;- (bazR$SF_3m_Q6 + bazR$SF_3m_Q10)
 
 bazR$SFtransformed_3m &lt;- ((aSF_3m-2)/8)*100
 
 #calcul dimension RE
-aRE_3m &lt;- (bazR$SF_3mQ5a + bazR$SF_3mQ5b + bazR$SF_3mQ5c)
+aRE_3m &lt;- (bazR$SF_3m_Q5a + bazR$SF_3m_Q5b + bazR$SF_3m_Q5c)
 
 bazR$REtransformed_3m &lt;- ((aRE_3m-3)/3)*100
 
 # Dimension MH
-aMH_3m &lt;- (bazR$SF_3mQ9b + bazR$SF_3mQ9c + bazR$SF_3mQ9d + bazR$SF_3mQ9f + bazR$SF_3mQ9h)
+aMH_3m &lt;- (bazR$SF_3m_Q9b + bazR$SF_3m_Q9c + bazR$SF_3m_Q9d + bazR$SF_3m_Q9f + bazR$SF_3m_Q9h)
 
 bazR$MHtransformed_3m &lt;- ((aMH_3m-5)/25)*100
 
 # Dimension HT
-aHT_3m &lt;- bazR$SF_3mQ2
+aHT_3m &lt;- bazR$SF_3m_Q2
 
 bazR$HTtransformed_3m &lt;- ((aHT_3m-1)/4)*100</code></pre>
 </div>
-</div>
-<div id="calculation-of-dimension-scores-at-12-months" class="section level2" number="3">
-<h2><span class="header-section-number">3</span> Calculation of
-dimension scores at 12 months</h2>
-<div id="imputation-of-missing-data-1" class="section level3" number="3.1">
-<h3><span class="header-section-number">3.1</span> Imputation of missing
-data</h3>
-<pre class="r"><code>items_sf36 &lt;- list(
-  PF = c(&quot;SF_12mQ3a&quot;, &quot;SF_12mQ3b&quot;,&quot;SF_12mQ3c&quot;,&quot;SF_12mQ3d&quot;, &quot;SF_12mQ3e&quot;, &quot;SF_12mQ3f&quot;,
-         &quot;SF_12mQ3g&quot;, &quot;SF_12mQ3h&quot;,&quot;SF_12mQ3i&quot;,&quot;SF_12mQ3j&quot;),
-  RP = c(&quot;SF_12mQ4a&quot;, &quot;SF_12mQ4b&quot;, &quot;SF_12mQ4c&quot;,&quot;SF_12mQ4d&quot;),
-  BP = c(&quot;SF_12mQ7&quot;,&quot;SF_12mQ8&quot;),
-  GH = c(&quot;SF_12mQ1&quot;,&quot;SF_12mQ11a&quot;,&quot;SF_12mQ11b&quot;, &quot;SF_12mQ11c&quot;,&quot;SF_12mQ11d&quot;),
-  VT = c(&quot;SF_12mQ9a&quot;, &quot;SF_12mQ9e&quot;,&quot;SF_12mQ9g&quot;,&quot;SF_12mQ9i&quot;),
-  SF = c(&quot;SF_12mQ6&quot;, &quot;SF_12mQ10&quot;),
-  RE = c(&quot;SF_12mQ5a&quot;,&quot;SF_12mQ5b&quot;,&quot;SF_12mQ5c&quot;),
-  MH = c(&quot;SF_12mQ9b&quot;,&quot;SF_12mQ9c&quot;,&quot;SF_12mQ9d&quot;,&quot;SF_12mQ9f&quot;,&quot;SF_12mQ9h&quot;)
+<div id="imputation-of-missing-data-at-12-months" class="section level4" number="3.4.3.3">
+<h4><span class="header-section-number">3.4.3.3</span> 3.3.3. Imputation
+of missing data at 12 months</h4>
+<p>Missing item values were imputed using the same method and function
+as for 3 months, with the same rule of at least 50% of items available
+to compute the dimension score.</p>
+<pre class="r"><code>items_sf36_12m &lt;- list(
+  PF = c(&quot;SF_12m_Q3a&quot;, &quot;SF_12m_Q3b&quot;,&quot;SF_12m_Q3c&quot;,&quot;SF_12m_Q3d&quot;, &quot;SF_12m_Q3e&quot;, &quot;SF_12m_Q3f&quot;,
+         &quot;SF_12m_Q3g&quot;, &quot;SF_12m_Q3h&quot;,&quot;SF_12m_Q3i&quot;,&quot;SF_12m_Q3j&quot;),
+  RP = c(&quot;SF_12m_Q4a&quot;, &quot;SF_12m_Q4b&quot;, &quot;SF_12m_Q4c&quot;,&quot;SF_12m_Q4d&quot;),
+  BP = c(&quot;SF_12m_Q7&quot;,&quot;SF_12m_Q8&quot;),
+  GH = c(&quot;SF_12m_Q1&quot;,&quot;SF_12m_Q11a&quot;,&quot;SF_12m_Q11b&quot;, &quot;SF_12m_Q11c&quot;,&quot;SF_12m_Q11d&quot;),
+  VT = c(&quot;SF_12m_Q9a&quot;, &quot;SF_12m_Q9e&quot;,&quot;SF_12m_Q9g&quot;,&quot;SF_12m_Q9i&quot;),
+  SF = c(&quot;SF_12m_Q6&quot;, &quot;SF_12m_Q10&quot;),
+  RE = c(&quot;SF_12m_Q5a&quot;,&quot;SF_12m_Q5b&quot;,&quot;SF_12m_Q5c&quot;),
+  MH = c(&quot;SF_12m_Q9b&quot;,&quot;SF_12m_Q9c&quot;,&quot;SF_12m_Q9d&quot;,&quot;SF_12m_Q9f&quot;,&quot;SF_12m_Q9h&quot;)
 )
 
-impute_sf36 &lt;- function(df, items_list) {
-  df_out &lt;- df
-  
-  for (dim in names(items_list)) {
-    vars &lt;- items_list[[dim]]
-    
-    # nombre d&#39;items présents par patient
-    present &lt;- rowSums(!is.na(df[vars]))
-    
-    # règle SF-36 : au moins 50% des items présents
-    enough &lt;- present &gt;= length(vars) / 2
-    
-    # moyenne des items présents
-    row_means &lt;- rowMeans(df[vars], na.rm = TRUE)
-    
-    # imputation des NA si règle respectée
-    for (v in vars) {
-      df_out[[v]][is.na(df[[v]]) &amp; enough] &lt;- row_means[is.na(df[[v]]) &amp; enough]
-    }
-    
-    # si &lt; 50% → toute la dimension devient NA
-    df_out[!enough, vars] &lt;- NA
-  }
-  
-  return(df_out)
-  
-}
-bazR &lt;- impute_sf36(bazR, items_sf36)</code></pre>
+
+bazR &lt;- impute_sf36(bazR, items_sf36_12m)</code></pre>
 </div>
-<div id="calculation-and-transformation-of-dimension-scores-at-3-months-1" class="section level3" number="3.2">
-<h3><span class="header-section-number">3.2</span> Calculation and
-transformation of dimension scores at 3 months</h3>
-<p>Raw scores for each dimension were first computed by summing the
-values of all items belonging to that dimension. Scores were then
-linearly transformed to a 0–100 scale using the following formula:</p>
-<p>Transformed score = ((Observed score - Minimum possible score) /
-(Maximum possible score - Minimum possible score)) × 100</p>
-<p>In this transformed scale, 0 represents the worst possible health
-status and 100 represents the best possible health status.</p>
+<div id="calculation-and-transformation-of-dimension-scores-at-3-months-1" class="section level4" number="3.4.3.4">
+<h4><span class="header-section-number">3.4.3.4</span> 3.3.4.
+Calculation and transformation of dimension scores at 3 months</h4>
+<p>Scores for each dimension were computed using the same method as for
+3 months, by summing the values of all items belonging to that dimension
+and then linearly transforming them to a 0–100 scale using the same
+formula as for 3 months.</p>
 <pre class="r"><code># Dimension PF
-aPF_12m &lt;- (bazR$SF_12mQ3a + bazR$SF_12mQ3b + bazR$SF_12mQ3c + bazR$SF_12mQ3d + bazR$SF_12mQ3e 
-            + bazR$SF_12mQ3f + bazR$SF_12mQ3g + bazR$SF_12mQ3h + bazR$SF_12mQ3i + bazR$SF_12mQ3j)
+aPF_12m &lt;- (bazR$SF_12m_Q3a + bazR$SF_12m_Q3b + bazR$SF_12m_Q3c + bazR$SF_12m_Q3d + bazR$SF_12m_Q3e 
+            + bazR$SF_12m_Q3f + bazR$SF_12m_Q3g + bazR$SF_12m_Q3h + bazR$SF_12m_Q3i + bazR$SF_12m_Q3j)
 
 bazR$PFtransformed_12m&lt;-((aPF_12m-10)/20)*100 
 
 # Dimension RP
-aRP_12m &lt;- (bazR$SF_12mQ4a + bazR$SF_12mQ4b + bazR$SF_12mQ4c + bazR$SF_12mQ4d)
+aRP_12m &lt;- (bazR$SF_12m_Q4a + bazR$SF_12m_Q4b + bazR$SF_12m_Q4c + bazR$SF_12m_Q4d)
 
 bazR$RPtransformed_12m &lt;- ((aRP_12m-4)/4)*100
 
 # Dimension BP
-aBP_12m &lt;- (bazR$SF_12mQ7 + bazR$SF_12mQ8)
+aBP_12m &lt;- (bazR$SF_12m_Q7 + bazR$SF_12m_Q8)
 
 bazR$BPtransformed_12m &lt;- ((aBP_12m-2)/10)*100
 
 # Dimension GH
-aGH_12m &lt;- (bazR$SF_12mQ1 + bazR$SF_12mQ11a + bazR$SF_12mQ11b + bazR$SF_12mQ11c + bazR$SF_12mQ11d)
+aGH_12m &lt;- (bazR$SF_12m_Q1 + bazR$SF_12m_Q11a + bazR$SF_12m_Q11b + bazR$SF_12m_Q11c + bazR$SF_12m_Q11d)
 
 bazR$GHtransformed_12m &lt;- ((aGH_12m-5)/20)*100
 
 # Dimension VT
-aVT_12m &lt;- (bazR$SF_12mQ9a + bazR$SF_12mQ9e + bazR$SF_12mQ9g + bazR$SF_12mQ9i)
+aVT_12m &lt;- (bazR$SF_12m_Q9a + bazR$SF_12m_Q9e + bazR$SF_12m_Q9g + bazR$SF_12m_Q9i)
 
 bazR$VTtransformed_12m &lt;- ((aVT_12m-4)/20)*100
 
 # Dimension SF
-aSF_12m &lt;- (bazR$SF_12mQ6 + bazR$SF_12mQ10)
+aSF_12m &lt;- (bazR$SF_12m_Q6 + bazR$SF_12m_Q10)
 
 bazR$SFtransformed_12m &lt;- ((aSF_12m-2)/8)*100
 
 # Dimension RE
-aRE_12m &lt;- (bazR$SF_12mQ5a + bazR$SF_12mQ5b + bazR$SF_12mQ5c)
+aRE_12m &lt;- (bazR$SF_12m_Q5a + bazR$SF_12m_Q5b + bazR$SF_12m_Q5c)
 
 bazR$REtransformed_12m &lt;- ((aRE_12m-3)/3)*100
 
 # Dimension MH
-aMH_12m &lt;- (bazR$SF_12mQ9b + bazR$SF_12mQ9c + bazR$SF_12mQ9d + bazR$SF_12mQ9f + bazR$SF_12mQ9h)
+aMH_12m &lt;- (bazR$SF_12m_Q9b + bazR$SF_12m_Q9c + bazR$SF_12m_Q9d + bazR$SF_12m_Q9f + bazR$SF_12m_Q9h)
 
 bazR$MHtransformed_12m &lt;- ((aMH_12m-5)/25)*100
 
 # Dimension HT
-aHT_12m &lt;- bazR$SF_12mQ2
+aHT_12m &lt;- bazR$SF_12m_Q2
 
 bazR$HTtransformed_12m &lt;- ((aHT_12m-1)/4)*100</code></pre>
 </div>
 </div>
-<div id="statistical-comparison-of-dimension-scores-at-3-and-12-months-and-construction-of-a-radar-plot" class="section level2" number="4">
-<h2><span class="header-section-number">4</span> Statistical comparison
-of dimension scores at 3 and 12 months and construction of a radar
-plot</h2>
-<pre class="r"><code>summary(bazR$PFtransformed_3m)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00   30.00   65.00   57.94   85.00  100.00      10</code></pre>
+<div id="visualization-of-the-evolution-of-dimension-scores-between-3-and-12-months-with-a-radar-plot-1" class="section level3" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> 3.4. Visualization
+of the evolution of dimension scores between 3 and 12 months with a
+radar plot</h3>
+<pre class="r"><code># Compare SF-36 scores between 3 and 12 months and store values for the construction of radar plot. And perform Wilcoxon test to assess if changes over time are statistically significant, with a significance threshold of p&lt;0.05.
+
+# Dimension PF
+summary(bazR$PFtransformed_3m)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00   25.00   60.56   54.67   85.00  100.00</code></pre>
 <pre class="r"><code>summary(bazR$PFtransformed_12m)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00   35.00   67.50   61.19   90.00  100.00       5</code></pre>
-<pre class="r"><code>radarPF=c(100,0,57.94,61.19) #max 100, min 0, PF3mois=58.19, PF1an=62.27
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00   36.25   60.00   59.29   86.88  100.00</code></pre>
+<pre class="r"><code>radarPF=c(100,0,54.67,59.29) #max 100, min 0, mean 3m, mean 12m
 wilcox.test(bazR$PFtransformed_3m,bazR$PFtransformed_12m)</code></pre>
+<pre><code>## Warning in wilcox.test.default(bazR$PFtransformed_3m, bazR$PFtransformed_12m):
+## impossible de calculer la p-value exacte avec des ex-aequos</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  bazR$PFtransformed_3m and bazR$PFtransformed_12m
-## W = 103502, p-value = 0.06693
+## W = 408.5, p-value = 0.5438
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<pre class="r"><code>summary(bazR$RPtransformed_3m)</code></pre>
+<pre class="r"><code># Dimension RP
+summary(bazR$RPtransformed_3m)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##     0.0     0.0     0.0    31.6    75.0   100.0      18</code></pre>
+##    0.00    0.00   25.00   35.19   62.50  100.00       3</code></pre>
 <pre class="r"><code>summary(bazR$RPtransformed_12m)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00    0.00   50.00   47.03  100.00  100.00      30</code></pre>
-<pre class="r"><code>radarRP=c(100,0,31.6,47.03)
+##    0.00    0.00   50.00   54.63  100.00  100.00       3</code></pre>
+<pre class="r"><code>radarRP=c(100,0,35.19,54.63)
 wilcox.test(bazR$RPtransformed_3m,bazR$RPtransformed_12m)</code></pre>
+<pre><code>## Warning in wilcox.test.default(bazR$RPtransformed_3m, bazR$RPtransformed_12m):
+## impossible de calculer la p-value exacte avec des ex-aequos</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  bazR$RPtransformed_3m and bazR$RPtransformed_12m
-## W = 83221, p-value = 5.656e-08
+## W = 275, p-value = 0.1071
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<pre class="r"><code>summary(bazR$BPtransformed_3m)</code></pre>
+<pre class="r"><code># Dimension BP
+summary(bazR$BPtransformed_3m)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    0.00   40.00   50.00   46.64   50.00   80.00</code></pre>
+##   10.00   40.00   60.00   60.33   90.00   90.00</code></pre>
 <pre class="r"><code>summary(bazR$BPtransformed_12m)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    0.00   40.00   50.00   48.16   50.00   90.00</code></pre>
-<pre class="r"><code>radarBP=c(100,0,46.64,48.16)
+##   10.00   40.00   60.00   51.67   60.00   90.00</code></pre>
+<pre class="r"><code>radarBP=c(100,0,36.33,51.67)
 wilcox.test(bazR$BPtransformed_3m,bazR$BPtransformed_12m)</code></pre>
+<pre><code>## Warning in wilcox.test.default(bazR$BPtransformed_3m, bazR$BPtransformed_12m):
+## impossible de calculer la p-value exacte avec des ex-aequos</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  bazR$BPtransformed_3m and bazR$BPtransformed_12m
-## W = 110042, p-value = 0.2523
+## W = 537, p-value = 0.1941
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<pre class="r"><code>summary(bazR$GHtransformed_3m)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00   35.00   50.00   50.42   65.00  100.00      14</code></pre>
+<pre class="r"><code># Dimension GH
+summary(bazR$GHtransformed_3m)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   15.00   30.00   40.00   40.67   48.75   65.00</code></pre>
 <pre class="r"><code>summary(bazR$GHtransformed_12m)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##     0.0    35.0    50.0    52.3    70.0   100.0       5</code></pre>
-<pre class="r"><code>radarHG=c(100,0,50.42,52.3)
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   40.00   50.00   60.00   58.83   68.75   85.00</code></pre>
+<pre class="r"><code>radarHG=c(100,0,40.7,58.83)
 wilcox.test(bazR$GHtransformed_3m,bazR$GHtransformed_12m)</code></pre>
+<pre><code>## Warning in wilcox.test.default(bazR$GHtransformed_3m, bazR$GHtransformed_12m):
+## impossible de calculer la p-value exacte avec des ex-aequos</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  bazR$GHtransformed_3m and bazR$GHtransformed_12m
-## W = 104649, p-value = 0.1803
+## W = 142.5, p-value = 5.008e-06
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<pre class="r"><code>summary(bazR$VTtransformed_3m)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00   30.00   50.00   47.53   65.00  100.00      10</code></pre>
+<pre class="r"><code># Dimension VT
+summary(bazR$VTtransformed_3m)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   25.00   35.00   40.00   42.22   53.75   70.00</code></pre>
 <pre class="r"><code>summary(bazR$VTtransformed_12m)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00   35.00   55.00   51.22   66.67  100.00       8</code></pre>
-<pre class="r"><code>radarVT=c(100,0,47.53,51.22)
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   10.00   41.25   51.67   50.50   65.00   75.00</code></pre>
+<pre class="r"><code>radarVT=c(100,0,42.22,50.50)
 wilcox.test(bazR$VTtransformed_3m,bazR$VTtransformed_12m)</code></pre>
+<pre><code>## Warning in wilcox.test.default(bazR$VTtransformed_3m, bazR$VTtransformed_12m):
+## impossible de calculer la p-value exacte avec des ex-aequos</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  bazR$VTtransformed_3m and bazR$VTtransformed_12m
-## W = 99953, p-value = 0.0115
+## W = 286, p-value = 0.01516
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<pre class="r"><code>summary(bazR$SFtransformed_3m)</code></pre>
+<pre class="r"><code># Dimension SF
+summary(bazR$SFtransformed_3m)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    0.00   37.50   62.50   61.01   87.50  100.00</code></pre>
+##    0.00   37.50   56.25   51.67   62.50  100.00</code></pre>
 <pre class="r"><code>summary(bazR$SFtransformed_12m)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    0.00   50.00   75.00   67.09   87.50  100.00</code></pre>
-<pre class="r"><code>radarSF=c(100,0,61.01,67.09)
+##   12.50   50.00   75.00   67.92   87.50  112.50</code></pre>
+<pre class="r"><code>radarSF=c(100,0,51.67,67.92)
 wilcox.test(bazR$SFtransformed_3m,bazR$SFtransformed_12m)</code></pre>
+<pre><code>## Warning in wilcox.test.default(bazR$SFtransformed_3m, bazR$SFtransformed_12m):
+## impossible de calculer la p-value exacte avec des ex-aequos</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  bazR$SFtransformed_3m and bazR$SFtransformed_12m
-## W = 99766, p-value = 0.0004144
+## W = 285.5, p-value = 0.01419
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<pre class="r"><code>summary(bazR$REtransformed_3m)</code></pre>
+<pre class="r"><code># Dimension RE
+summary(bazR$REtransformed_3m)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00    0.00   33.33   46.19  100.00  100.00      41</code></pre>
+##    0.00    0.00   66.67   51.28  100.00  100.00       4</code></pre>
 <pre class="r"><code>summary(bazR$REtransformed_12m)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00    0.00   66.67   56.06  100.00  100.00      39</code></pre>
-<pre class="r"><code>radarRE=c(100,0,46.19,56.06)
+##    0.00   33.33   66.67   62.96  100.00  100.00       3</code></pre>
+<pre class="r"><code>radarRE=c(100,0,51.28,62.96)
 wilcox.test(bazR$REtransformed_3m,bazR$REtransformed_12m)</code></pre>
+<pre><code>## Warning in wilcox.test.default(bazR$REtransformed_3m, bazR$REtransformed_12m):
+## impossible de calculer la p-value exacte avec des ex-aequos</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  bazR$REtransformed_3m and bazR$REtransformed_12m
-## W = 84570, p-value = 0.0008932
+## W = 294.5, p-value = 0.2879
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<pre class="r"><code>summary(bazR$MHtransformed_3m)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##   16.00   52.00   64.00   61.35   72.00   95.00      10</code></pre>
+<pre class="r"><code># Dimension MH
+summary(bazR$MHtransformed_3m)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   12.00   45.75   62.00   58.80   76.00   92.00</code></pre>
 <pre class="r"><code>summary(bazR$MHtransformed_12m)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##   20.00   52.00   64.00   62.45   72.00  100.00      10</code></pre>
-<pre class="r"><code>radarMH=c(100,0,61.35,62.45)
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   25.00   50.50   60.00   61.47   76.00   92.00</code></pre>
+<pre class="r"><code>radarMH=c(100,0,58.80,61.47)
 wilcox.test(bazR$MHtransformed_3m,bazR$MHtransformed_12m)</code></pre>
+<pre><code>## Warning in wilcox.test.default(bazR$MHtransformed_3m, bazR$MHtransformed_12m):
+## impossible de calculer la p-value exacte avec des ex-aequos</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  bazR$MHtransformed_3m and bazR$MHtransformed_12m
-## W = 105971, p-value = 0.3321
+## W = 430.5, p-value = 0.7783
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<pre class="r"><code>png(&quot;./results/radar_plot.png&quot;,width = 1800,height = 1800,res = 300)
-
+<pre class="r"><code># Create a matrix for the radar plot with the computed scores for each dimension at 3 and 12 months, along with the maximum and minimum values (0-100)
 data&lt;-cbind(radarPF,radarRP,radarBP,radarHG,radarVT,radarSF,radarRE,radarMH) #fait tableau avec ensemble dimensions
 
-labels = c(&quot;PF \n p=0.06&quot;,&quot;RP\n p&lt;0.0001&quot;,&quot;BP\n p=0.25&quot;,&quot;HG\n p=0.18&quot;,
-           &quot;VT\n p=0.01&quot;,&quot;SF\n  p=0.0004&quot;,&quot;RE\n p=0.0008&quot;,&quot;MH\n p=0.33&quot;)
+# Define labels for each dimension that include the p-values from the Wilcoxon tests
 
-colnames(data)&lt;-labels #remplace nom des colonnes par valeurs dans data
+labels = c(&quot;PF \n p=0.5&quot;,&quot;RP\n p=0.1&quot;,&quot;BP\n p=0.2&quot;,&quot;GH\n p&lt;0.0001&quot;,
+           &quot;VT\n p=0.01&quot;,&quot;SF\n  p=0.01&quot;,&quot;RE\n p=0.3&quot;,&quot;MH\n p=0.8&quot;)
 
-# Les données sont mises en forme sous forme de tableau dont les colonnes sont nommées
-#requiert package fmsb et scales
-library(fmsb)</code></pre>
-<pre><code>## Warning: le package &#39;fmsb&#39; a été compilé avec la version R 4.5.3</code></pre>
-<pre class="r"><code>library(scales)
+# Rename columns of the matrix with the defined labels
+colnames(data)&lt;-labels
 
-datx = as.data.frame(data) ; datx</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["PF \n p=0.06"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RP\n p<0.0001"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["BP\n p=0.25"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["HG\n p=0.18"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["VT\n p=0.01"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["SF\n  p=0.0004"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["RE\n p=0.0008"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["MH\n p=0.33"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"100.00","2":"100.00","3":"100.00","4":"100.00","5":"100.00","6":"100.00","7":"100.00","8":"100.00"},{"1":"0.00","2":"0.00","3":"0.00","4":"0.00","5":"0.00","6":"0.00","7":"0.00","8":"0.00"},{"1":"57.94","2":"31.60","3":"46.64","4":"50.42","5":"47.53","6":"61.01","7":"46.19","8":"61.35"},{"1":"61.19","2":"47.03","3":"48.16","4":"52.30","5":"51.22","6":"67.09","7":"56.06","8":"62.45"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<pre class="r"><code>coul &lt;- c(&quot;red&quot;, &quot;blue&quot;) #creer un vecteur de 3 couleurs
+# Convert the matrix to a data frame for use with the radar chart function
+datx = as.data.frame(data)
 
-radarchart(datx, 
-           axistype = 2, 
-           seg = 5, #radachart sur data frame datx, axistype= style des axes, seg=nb de graduation
-           vlcex = 0.7,
-           pcol = coul,#couleurs contour des polygones
-           plwd=2 , 
-           plty=1, #épaisseur lignes, et lignes pleines (plty=1) 
-           cglcol=&quot;gray71&quot;, 
-           cglty=1,
-           axislabcol=&quot;grey&quot;,      #couleur et style grille
+coul &lt;- c(&quot;red&quot;, &quot;blue&quot;) # Define colors for the radar chart: red for 3 months and blue for 12 months
+
+# Save radar plot as a PNG file
+png(&quot;./results/radar_plot.png&quot;,width = 2400,height = 1800,res = 300)
+
+# Create the radar chart using the fmsb package, with specified parameters for axis type, segments, colors, line width and type, grid color and type, and axis label color
+radarchart(datx,
+           axistype = 2, # graduation of axes
+           seg = 5, # number of segments in the radar chart
+           vlcex = 0.7, # size of labels for each dimension
+           pcol = coul,# colors for the lines representing 3 and 12 months
+           plty=1, # style of lines
+           cglcol=&quot;gray71&quot;, # color of the grid lines
+           cglty=1, # style of grid lines
+           axislabcol=&quot;grey&quot;, # color of axis labels
 
 )
 
 
-legend(1.6,0.8,#position légende
+legend(1.2,0.8,# position of the legend on the plot
        legend=c(&quot;3 month&quot;,&quot;12 month&quot;), 
-       pch=c(16,16), #symboles points pleins
-       col=c(&quot;red&quot;,&quot;blue&quot;), #couleurs associées aux légendes
-       lty=c(1,1), #ligne pleine
-       text.font=1, #texte en gras
-       box.lty=0 #pas de cadre autour figure
+       pch=c(16,16), # symbols
+       col=c(&quot;red&quot;,&quot;blue&quot;), # colors for the symbols
+       lty=c(1,1), # line types
 )
 dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
 </div>
-<div id="export-data" class="section level2" number="5">
-<h2><span class="header-section-number">5</span> Export data</h2>
-<pre class="r"><code>write.csv(bazR, &quot;results/bazR_scores.csv&quot;, row.names = FALSE)</code></pre>
+</div>
+<div id="export-the-data-in-the-results-folder" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Export the data in
+the results folder</h2>
+<pre class="r"><code>write.csv(bazR, &quot;results/bazP_scores.csv&quot;, row.names = FALSE)</code></pre>
+</div>
 </div>
 
 
