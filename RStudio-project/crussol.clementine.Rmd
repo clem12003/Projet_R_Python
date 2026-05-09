@@ -64,7 +64,9 @@ Colums:
 **Aim**: To compute dimension scores and transform them onto a 0-100 scale for comparability and interpretation  
 **Input**: `bazRSF.csv` in `data` folder  
 **Calculation**:   
-Raw scores for each dimension are first computed by summing the values of all items belonging to that dimension.  
+Before computing dimension scores, we perform mean imputation at the dimension level. If at least 50% of items within a dimension are available, missing values are replaced by the mean of the observed items in that dimension. If fewer than 50% of items are present, the dimension score is left as `NA`.  
+
+Then, raw scores for each dimension are computed by summing the values of all items belonging to that dimension.  
 Scores are then linearly transformed to a 0–100 scale using the following formula:  
 
 $$
