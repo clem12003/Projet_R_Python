@@ -89,15 +89,13 @@ In this transformed scale, 0 represents the worst possible health status and 100
 
 These lines load the necessary libraries for data manipulation and visualization.
 ```{r}
-# If you don't have the packages installed, you can install them using the following commands:
-
-# install.packages("fmsb")
+# If you don't have the packages installed, you can install it using the following commands:
 # install.packages("scales")
 
-# Then, load the libraries:
+# Then, load the library:
 
 library(fmsb)
-library(scales)
+
 ```
 
 ```{r}
