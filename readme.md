@@ -7,7 +7,6 @@ Advances in intensive care medicine have significantly reduced ICU mortality ove
 
 According to the World Health Organization (WHO), quality of life refers to an individual’s perception of their position in life within the cultural and social context in which they live (4). In the medical field, HRQoL is considered a multidimensional concept reflecting the influence of health status and healthcare on physical, psychological, and social dimensions of health (5). Previous studies have shown that ICU survivors often report lower HRQoL scores than the general population, with only partial recovery over time (6, 7).
 
-This project aims to describe the evolution of HRQoL at 3 and 12 months after ICU discharge using the SF-36 questionnaire.
 
 ## 1.2. Aim 
 
