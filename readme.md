@@ -7,7 +7,6 @@ Advances in intensive care medicine have significantly reduced ICU mortality ove
 
 According to the World Health Organization (WHO), quality of life refers to an individual’s perception of their position in life within the cultural and social context in which they live (4). In the medical field, HRQoL is considered a multidimensional concept reflecting the influence of health status and healthcare on physical, psychological, and social dimensions of health (5). Previous studies have shown that ICU survivors often report lower HRQoL scores than the general population, with only partial recovery over time (6, 7).
 
-
 ## 1.2. Aim 
 
 The aim of this study is to evaluate the quality of life of ICU survivors at 3 and 12 months after discharge, using the SF-36 questionnaire. Specifically, it seeks to assess changes over time in the different dimensions of quality of life, including physical and mental components, in order to better understand recovery trajectories following critical illness.
@@ -23,7 +22,7 @@ Then, this dimensions are grouped into two components, the Physical Component Su
 
 SF-36 domains were scored according to standard procedures. Scores of each dimension were first computed by summing the values of all items belonging to that dimension and were then linearly transformed to a 0–100 scale. Higher scores indicate better heath status.
 
-The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores. Then they were standardized unsing French reference population norms.
+The Physical Component Summary (PCS) and Mental Component Summary (MCS) were then calculated using the dimensions scores and standardized unsing French reference population norms.
 
 Detailed information on SF-36 scoring procedures, including item mapping, score transformation, and computation of PCS and MCS, is provided in the `SF-36 appendix.md`.
 
@@ -42,8 +41,8 @@ The aim of this project is to assess SF-36 dimension scores at 3 and 12 months a
 File: `bazRSF.csv`  
 Colums:  
 `ID`: Patient ID, corresponding to their number of inclusion  
-`SF_3m_Q[y]`: SF-36 score at 3 months for question y (where y is the question number e.g. 1, 2, 3a, ...)   
-`SF_12m_Q[y]`: SF-36 score at 12 months for question y (where y is the question number e.g. 1, 2, 3a, ...)  
+`SF_3m_Q[x]`: SF-36 score at 3 months for question x (where x is the question number e.g. 1, 2, 3a, ...)   
+`SF_12m_Q[x]`: SF-36 score at 12 months for question x (where x is the question number e.g. 1, 2, 3a, ...)  
 
 ## 2.3. Script organization
 ### 2.3.1. Recoding of SF-36 item scores
@@ -68,7 +67,7 @@ In this transformed scale, 0 represents the worst possible health status and 100
 **Output**: A normalized score for each dimension, ranging between 0 and 100. Exported as `bazP_scores.csv` in the `results` folder  
 
 ### 2.3.3. Visualization of the evolution of dimension scores between 3 and 12 months with a radar plot
-**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant, using a radar plot  
+**Aim**: To visually compare dimension scores between 3 and 12 months using a radar plot, and assess if changes over time is statistically significant  
 **Input**: `bazRSF.csv` in `data` folder  
 **Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement or not  
 
@@ -87,7 +86,7 @@ Colums:
 
 ## 3.3. Script organization
 ### 3.3.1. Calculation of the Physical and Mental Component Summay (PCS and MCS)
-**Aim**: To compute summary scores representing overall physical (PCS) and mental (MCS) health status from SF-36 dimensions
+**Aim**: To compute summary scores representing overall physical (PCS) and mental (MCS) health status from SF-36 dimensions  
 **Input**: `bazP_scores.csv` in `data` folder  
 **Calculation**:
 Each SF-36 dimension score is first standardized into a z-score using the reference values of the French population :  
@@ -110,11 +109,11 @@ The reference values from the French general population are provided in the `SF-
 
 This workflow provides a structured approach to analyzing longitudinal changes in health-related quality of life after intensive care. It can be used as a reproducible framework for SF-36 data processing, visualization, and statistical comparison over time.
 
-## Tools
+## 4. Tools
 
 Tools such as Claude and Chatgpt were used as methodological and programming support, particularly for debugging and code clarification.  
 
-## 4. References
+## 5. References
 1. Lilly CM, Swami S, Liu X, Riker RR, Badawi O. Five-Year Trends of Critical Care Practice and Outcomes. Chest. oct 2017;152(4):723‑35. doi:10.1016/j.chest.2017.06.050
 
 2. Geense WW, Zegers M, Peters MAA, Ewalds E, Simons KS, Vermeulen H, et al. New Physical, Mental, and Cognitive Problems 1 Year after ICU Admission: A Prospective Multicenter Study. Am J Respir Crit Care Med. 15 juin 2021;203(12):1512‑21. doi:10.1164/rccm.202009-3381OC
