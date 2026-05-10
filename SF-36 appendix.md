@@ -7,7 +7,7 @@ The 36 item of the questionnaire then form 8 dimensions.
 
 |          Dimension        | Items corresponding |
 |:-------------------------:|:-------------------:|
-| Physical Functioning (PF) |       3a to 3i      |
+| Physical Functioning (PF) |       3a to 3j      |
 | Role Physical (RP)        |       4a to 4d      |
 | Bodily Pain (BP)          |       7 and 8       |
 | General Health (GH)       |    1, 11a to 11d    |
