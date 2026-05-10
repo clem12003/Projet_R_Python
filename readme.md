@@ -66,10 +66,10 @@ $$
 $$
 
 In this transformed scale, 0 represents the worst possible health status and 100 represents the best possible health status.  
-**Output**: A standardized score for each dimension, ranging between 0 and 100  
+**Output**: A normalized score for each dimension, ranging between 0 and 100. Exported as `bazP_scores.csv` in the `results` folder  
 
 ### 2.3.3. Visualization of the evolution of dimension scores between 3 and 12 months with a radar plot
-**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant, using a radar plot 
+**Aim**: To visually compare dimension scores between 3 and 12 months, and assess if changes over time is statistically significant, using a radar plot  
 **Input**: `bazRSF.csv` in `data` folder  
 **Output**: A radar plot comparing dimension scores at 3 and 12 months with p-values indicating whether changes over time reflect a significant improvement or not  
 
