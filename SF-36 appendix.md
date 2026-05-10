@@ -43,7 +43,7 @@ Here are the minimum and maximal posible scores for each dimension.
 
 ## Calculation of the physical and mental components (PCS and MCS)
 
-The SF-36 domain scores were then standardized into z-scores using reference values from the French general population in order to compute the Physical Component Summary (PCS) and Mental Component Summary (MCS).
+The SF-36 dimensions scores were then standardized into z-scores using reference values from the French general population in order to compute the Physical Component Summary (PCS) and Mental Component Summary (MCS).
 
 
 $$
