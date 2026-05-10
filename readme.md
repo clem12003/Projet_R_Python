@@ -111,6 +111,10 @@ The reference values from the French general population are provided in the `SF-
 
 This workflow provides a structured approach to analyzing longitudinal changes in health-related quality of life after intensive care. It can be used as a reproducible framework for SF-36 data processing, visualization, and statistical comparison over time.
 
+## Tools
+
+Tools such as Claude and Chatgpt were used as methodological and programming support, particularly for debugging and code clarification.  
+
 ## 4. References
 1. Lilly CM, Swami S, Liu X, Riker RR, Badawi O. Five-Year Trends of Critical Care Practice and Outcomes. Chest. oct 2017;152(4):723‑35. doi:10.1016/j.chest.2017.06.050
 
