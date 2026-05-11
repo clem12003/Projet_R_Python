@@ -4,7 +4,7 @@ author: "Clémentine Crussol"
 output:
   html_document:
     df_print: paged
-    code_folding: hide
+    code_folding: show
     toc: false
     number_sections: true
 ---
@@ -90,7 +90,7 @@ In this transformed scale, 0 represents the worst possible health status and 100
 These lines load the necessary libraries for data manipulation and visualization.
 ```{r}
 # If you don't have the packages installed, you can install it using the following commands:
-# install.packages("scales")
+# install.packages("fmsb")
 
 # Then, load the library:
 

@@ -1827,8 +1827,13 @@ onto a 0-100 scale for comparability and interpretation<br />
 <strong>Input</strong>: <code>bazRSF.csv</code> in <code>data</code>
 folder<br />
 <strong>Calculation</strong>:<br />
-Raw scores for each dimension are first computed by summing the values
-of all items belonging to that dimension.<br />
+Before computing dimension scores, we perform mean imputation at the
+dimension level. If at least 50% of items within a dimension are
+available, missing values are replaced by the mean of the observed items
+in that dimension. If fewer than 50% of items are present, the dimension
+score is left as <code>NA</code>.</p>
+<p>Then, raw scores for each dimension are computed by summing the
+values of all items belonging to that dimension.<br />
 Scores are then linearly transformed to a 0–100 scale using the
 following formula:</p>
 <p><span class="math display">\[
@@ -1862,16 +1867,13 @@ a significant improvement or not</p>
 <h3><span class="header-section-number">3.4.1</span> 3.1 Setup</h3>
 <p>These lines load the necessary libraries for data manipulation and
 visualization.</p>
-<pre class="r"><code># If you don&#39;t have the packages installed, you can install them using the following commands:
-
+<pre class="r"><code># If you don&#39;t have the packages installed, you can install it using the following commands:
 # install.packages(&quot;fmsb&quot;)
-# install.packages(&quot;scales&quot;)
 
-# Then, load the libraries:
+# Then, load the library:
 
 library(fmsb)</code></pre>
 <pre><code>## Warning: le package &#39;fmsb&#39; a été compilé avec la version R 4.5.3</code></pre>
-<pre class="r"><code>library(scales)</code></pre>
 <pre class="r"><code># Load the data
 bazR &lt;- read.csv(&quot;data/bazRSF.csv&quot;, header = TRUE, sep = &quot;;&quot;)</code></pre>
 </div>
@@ -2328,7 +2330,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
+  window.initializeCodeFolding("show" === "show");
 });
 </script>
 
