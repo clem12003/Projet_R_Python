@@ -114,22 +114,19 @@ This workflow provides a structured approach to analyzing longitudinal changes i
 Tools such as Claude and Chatgpt were used as methodological and programming support, particularly for debugging and code clarification.  
 
 ## 5. References
-1. Lilly CM, Swami S, Liu X, Riker RR, Badawi O. Five-Year Trends of Critical Care Practice and Outcomes. Chest. oct 2017;152(4):723‑35. doi:10.1016/j.chest.2017.06.050
+1. Lilly CM, Swami S, Liu X, Riker RR, Badawi O. Five-Year Trends of Critical Care Practice and Outcomes. Chest. oct 2017;152(4):723‑35.
 
-2. Geense WW, Zegers M, Peters MAA, Ewalds E, Simons KS, Vermeulen H, et al. New Physical, Mental, and Cognitive Problems 1 Year after ICU Admission: A Prospective Multicenter Study. Am J Respir Crit Care Med. 15 juin 2021;203(12):1512‑21. doi:10.1164/rccm.202009-3381OC
+2. Geense WW, Zegers M, Peters MAA, Ewalds E, Simons KS, Vermeulen H, et al. New Physical, Mental, and Cognitive Problems 1 Year after ICU Admission: A Prospective Multicenter Study. Am J Respir Crit Care Med. 15 juin 2021;203(12):1512‑21.
 
-3. Mikkelsen ME, Still M, Anderson BJ, Bienvenu OJ, Brodsky MB, Brummel N, et al. Society of Critical Care Medicine’s International Consensus Conference on Prediction and Identification of Long-Term Impairments After Critical Illness. Crit Care Med. nov 2020;48(11):1670‑9. doi:10.1097/CCM.0000000000004586
+3. Mikkelsen ME, Still M, Anderson BJ, Bienvenu OJ, Brodsky MB, Brummel N, et al. Society of Critical Care Medicine’s International Consensus Conference on Prediction and Identification of Long-Term Impairments After Critical Illness. Crit Care Med. nov 2020;48(11):1670‑9. 
 
 4. World Health Organisation. « Introducing the WHOQOL instruments » WHOQOL:Measuring Quality of Life.
 
-5. de Wit M, Hajos T. Health-Related Quality of Life. In: Gellman M, Turner J, éditeurs.
-Encyclopedia of Behavioral Medicine. Springer. New York (NY); 2013. https://link.springer.com/rwe/10.1007/978-1-4419-1005-9_753#citeas
+5. de Wit M, Hajos T. Health-Related Quality of Life. In: Gellman M, Turner J, éditeurs. Encyclopedia of Behavioral Medicine. Springer. New York (NY); 2013.
+6. Oeyen SG, Vandijck DM, Benoit DD, Annemans L, Decruyenaere JM. Quality of life after intensive care: A systematic review of the literature: Crit Care Med. déc 2010;38(12):2386‑400.
 
-6. Oeyen SG, Vandijck DM, Benoit DD, Annemans L, Decruyenaere JM. Quality of life after intensive care: A systematic review of the literature: Crit Care Med. déc 2010;38(12):2386‑400. doi:10.1097/CCM.0b013e3181f3dec5
-
-7. Cuthbertson BH, Roughton S, Jenkinson D, MacLennan G, Vale L. Quality of life in the five years after intensive care: a cohort study. Crit Care. 20 janv 2010;14(1):R6. doi:10.1186/cc8848
+7. Cuthbertson BH, Roughton S, Jenkinson D, MacLennan G, Vale L. Quality of life in the five years after intensive care: a cohort study. Crit Care. 20 janv 2010;14(1):R6. 
 
 8. Ware JE Jr, Sherbourne CD. The MOS 36-ltem Short-Form Health Survey (SF-36) I. Conceptual Framework and Item Selection. Med Care. 1992;30(6):473‑83.
-doi:10.1097/00005650-199206000-00002
 
 9. Ware JE, Kosinski M, Keller SD. SF-36 Physical and Mental Health Summary Scales: A User’s Manual. Health Assessment Lab. Boston, MA; 1994.
