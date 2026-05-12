@@ -1719,10 +1719,9 @@ display: none;
 life after intensive care</h1>
 </div>
 <div id="scientific-problem" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> 1. Scientific
-problem</h1>
+<h1><span class="header-section-number">2</span> Scientific problem</h1>
 <div id="context" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> 1.1. Context</h2>
+<h2><span class="header-section-number">2.1</span> Context</h2>
 <p>Advances in intensive care medicine have significantly reduced ICU
 mortality over recent decades, leading to a growing population of ICU
 survivors with persistent impairments after discharge (1, 2). These
@@ -1741,7 +1740,7 @@ population, with only partial recovery over time (6, 7).</p>
 months after ICU discharge using the SF-36 questionnaire.</p>
 </div>
 <div id="aim" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> 1.2. Aim</h2>
+<h2><span class="header-section-number">2.2</span> Aim</h2>
 <p>The aim of this study is to evaluate the quality of life of ICU
 survivors at 3 and 12 months after discharge, using the SF-36
 questionnaire. Specifically, it seeks to assess changes over time in the
@@ -1750,7 +1749,7 @@ components, in order to better understand recovery trajectories
 following critical illness.</p>
 </div>
 <div id="method" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> 1.3. Method</h2>
+<h2><span class="header-section-number">2.3</span> Method</h2>
 <p>All ICU survivors were contacted by mail 3 and 12 month after
 hospital discharge and were asked to complete the SF-36
 questionnaire.</p>
@@ -1785,16 +1784,16 @@ and 12 months were included in the study.</p>
 </div>
 </div>
 <div id="rstudio-project" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> 2. RStudio project</h1>
+<h1><span class="header-section-number">3</span> RStudio project</h1>
 <div id="aim-1" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> 2.1. Aim</h2>
+<h2><span class="header-section-number">3.1</span> Aim</h2>
 <p>The aim of this project is to assess SF-36 dimension scores at 3 and
 12 months after ICU discharge. In addition, a radar chart will be
 generated to visualize changes in quality of life dimensions over
 time.</p>
 </div>
 <div id="data-organization" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> 2.2. Data
+<h2><span class="header-section-number">3.2</span> Data
 organization</h2>
 <p>File: <code>bazRSF.csv</code><br />
 Colums:<br />
@@ -1806,11 +1805,11 @@ is the question number e.g. 1, 2, 3a, …)<br />
 y is the question number e.g. 1, 2, 3a, …)</p>
 </div>
 <div id="script-organization" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> 2.3. Script
+<h2><span class="header-section-number">3.3</span> Script
 organization</h2>
 <div id="recoding-of-sf-36-item-scores" class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> 2.3.1. Recoding of
-SF-36 item scores</h3>
+<h3><span class="header-section-number">3.3.1</span> Recoding of SF-36
+item scores</h3>
 <p><strong>Aim</strong>: To recode the SF-36 item responses so that
 higher scores correspond to a better health status accross all
 items.<br />
@@ -1820,8 +1819,8 @@ folder<br />
 values indicate better perceived health status.</p>
 </div>
 <div id="calculation-and-transformation-of-dimension-scores-at-3-and-12-months" class="section level3" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> 2.3.2. Calculation
-and transformation of dimension scores at 3 and 12 months</h3>
+<h3><span class="header-section-number">3.3.2</span> Calculation and
+transformation of dimension scores at 3 and 12 months</h3>
 <p><strong>Aim</strong>: To compute dimension scores and transform them
 onto a 0-100 scale for comparability and interpretation<br />
 <strong>Input</strong>: <code>bazRSF.csv</code> in <code>data</code>
@@ -1847,9 +1846,9 @@ status and 100 represents the best possible health status.<br />
 ranging between 0 and 100</p>
 </div>
 <div id="visualization-of-the-evolution-of-dimension-scores-between-3-and-12-months-with-a-radar-plot" class="section level3" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> 2.3.3.
-Visualization of the evolution of dimension scores between 3 and 12
-months with a radar plot</h3>
+<h3><span class="header-section-number">3.3.3</span> Visualization of
+the evolution of dimension scores between 3 and 12 months with a radar
+plot</h3>
 <p><strong>Aim</strong>: To visually compare dimension scores between 3
 and 12 months, and assess if changes over time is statistically
 significant, using a radar plot<br />
@@ -1862,9 +1861,9 @@ a significant improvement or not</p>
 </div>
 </div>
 <div id="code" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> 3. Code</h2>
+<h2><span class="header-section-number">3.4</span> Code</h2>
 <div id="setup" class="section level3" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> 3.1 Setup</h3>
+<h3><span class="header-section-number">3.4.1</span> Setup</h3>
 <p>These lines load the necessary libraries for data manipulation and
 visualization.</p>
 <pre class="r"><code># If you don&#39;t have the packages installed, you can install it using the following commands:
@@ -1878,8 +1877,8 @@ library(fmsb)</code></pre>
 bazR &lt;- read.csv(&quot;data/bazRSF.csv&quot;, header = TRUE, sep = &quot;;&quot;)</code></pre>
 </div>
 <div id="recoding-of-sf-36-item-scores-1" class="section level3" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> 3.2. Recoding of
-SF-36 item scores</h3>
+<h3><span class="header-section-number">3.4.2</span> Recoding of SF-36
+item scores</h3>
 <p>Item responses are recoded so that higher values reflect better
 health status across all SF-36 dimensions, ensuring comparability
 between items and correct interpretation of scores. The items that need
@@ -1910,11 +1909,11 @@ bazR[items_6] &lt;- lapply(bazR[items_6], reverse6)
 bazR[items_7] &lt;- lapply(bazR[items_7], reverse7)</code></pre>
 </div>
 <div id="calculation-and-transformation-of-dimension-scores-at-3-and-12-months-1" class="section level3" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> 3.3. Calculation
-and transformation of dimension scores at 3 and 12 months</h3>
+<h3><span class="header-section-number">3.4.3</span> Calculation and
+transformation of dimension scores at 3 and 12 months</h3>
 <div id="imputation-of-missing-data" class="section level4" number="3.4.3.1">
-<h4><span class="header-section-number">3.4.3.1</span> 3.3.1 Imputation
-of missing data</h4>
+<h4><span class="header-section-number">3.4.3.1</span> Imputation of
+missing data</h4>
 <p>Missing item values were imputed at the dimension level when at least
 50% of items were available: in this case, missing values were replaced
 by the mean of observed items within the same dimension. If less than
@@ -1969,8 +1968,8 @@ impute_sf36 &lt;- function(df, items_list) {
 bazR &lt;- impute_sf36(bazR, items_sf36_3m)</code></pre>
 </div>
 <div id="calculation-and-transformation-of-dimension-scores-at-3-months" class="section level4" number="3.4.3.2">
-<h4><span class="header-section-number">3.4.3.2</span> 3.3.2.
-Calculation and transformation of dimension scores at 3 months</h4>
+<h4><span class="header-section-number">3.4.3.2</span> Calculation and
+transformation of dimension scores at 3 months</h4>
 <p>Raw scores for each dimension were first computed by summing the
 values of all items belonging to that dimension. Scores were then
 linearly transformed to a 0–100 scale using the following formula:</p>
@@ -2028,8 +2027,8 @@ aHT_3m &lt;- bazR$SF_3m_Q2
 bazR$HTtransformed_3m &lt;- ((aHT_3m-1)/4)*100</code></pre>
 </div>
 <div id="imputation-of-missing-data-at-12-months" class="section level4" number="3.4.3.3">
-<h4><span class="header-section-number">3.4.3.3</span> 3.3.3. Imputation
-of missing data at 12 months</h4>
+<h4><span class="header-section-number">3.4.3.3</span> Imputation of
+missing data at 12 months</h4>
 <p>Missing item values were imputed using the same method and function
 as for 3 months, with the same rule of at least 50% of items available
 to compute the dimension score.</p>
@@ -2049,8 +2048,8 @@ to compute the dimension score.</p>
 bazR &lt;- impute_sf36(bazR, items_sf36_12m)</code></pre>
 </div>
 <div id="calculation-and-transformation-of-dimension-scores-at-3-months-1" class="section level4" number="3.4.3.4">
-<h4><span class="header-section-number">3.4.3.4</span> 3.3.4.
-Calculation and transformation of dimension scores at 3 months</h4>
+<h4><span class="header-section-number">3.4.3.4</span> Calculation and
+transformation of dimension scores at 3 months</h4>
 <p>Scores for each dimension were computed using the same method as for
 3 months, by summing the values of all items belonging to that dimension
 and then linearly transforming them to a 0–100 scale using the same
@@ -2103,9 +2102,9 @@ bazR$HTtransformed_12m &lt;- ((aHT_12m-1)/4)*100</code></pre>
 </div>
 </div>
 <div id="visualization-of-the-evolution-of-dimension-scores-between-3-and-12-months-with-a-radar-plot-1" class="section level3" number="3.4.4">
-<h3><span class="header-section-number">3.4.4</span> 3.4. Visualization
-of the evolution of dimension scores between 3 and 12 months with a
-radar plot</h3>
+<h3><span class="header-section-number">3.4.4</span> Visualization of
+the evolution of dimension scores between 3 and 12 months with a radar
+plot</h3>
 <pre class="r"><code># Compare SF-36 scores between 3 and 12 months and store values for the construction of radar plot. And perform Wilcoxon test to assess if changes over time are statistically significant, with a significance threshold of p&lt;0.05.
 
 # Dimension PF
